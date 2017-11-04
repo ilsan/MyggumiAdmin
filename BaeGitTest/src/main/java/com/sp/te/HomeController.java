@@ -31,12 +31,15 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 
-
-
-
 		model.addAttribute("serverTime", formattedDate );
-		
+
 		return "home";
 	}
-	
+
+
+	@RequestMapping(value = "/pushTest/jihoon", method = RequestMethod.GET)
+	public void jihoonPushTest() {
+        System.out.println("hello jihoon push test");
+    }
+
 }
