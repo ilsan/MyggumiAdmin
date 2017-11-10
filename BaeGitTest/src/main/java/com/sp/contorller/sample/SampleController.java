@@ -49,4 +49,30 @@ public class SampleController {
 		
 		return "/sample/sample";
 	}
+	
+	/*배포테스트*/
+	@RequestMapping(value = "/homeTest")
+	public String homeTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		logger.info("=======SampleController=======sample Start");
+			Map<String,Object> paramMap = ParamUtil.paramMap(request);
+			
+			List<Map<String,Object>> resultList = null;
+			
+			Integer resultCount = 0;
+			
+		try {
+			
+			resultList = sampleService.selectListSample(paramMap);
+			resultCount = sampleService.selectListSampleCnt(paramMap);
+			
+			request.setAttribute("resultList", resultList);
+			request.setAttribute("resultCount", resultCount);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "home";
+	}
 }
