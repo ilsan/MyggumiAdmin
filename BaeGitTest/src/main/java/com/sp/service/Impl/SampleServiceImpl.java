@@ -13,6 +13,7 @@ public class SampleServiceImpl implements SampleService{
 
     private final SampleMapper sampleMapper;
 
+
     @Autowired
     public SampleServiceImpl(SampleMapper sampleMapper) {
         this.sampleMapper = sampleMapper;
