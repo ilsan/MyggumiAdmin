@@ -22,7 +22,7 @@ public class SampleController {
 
     @RequestMapping(value = "/")
     public ModelAndView home() {
-        log.info("zzzzzzzzzz");
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample/sample");
         modelAndView.addObject("resultList",sampleService.getUserList());
