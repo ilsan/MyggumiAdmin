@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
 
 @Aspect
 @Slf4j
@@ -17,7 +16,7 @@ public class AopLogHandler {
         Object resultVal = point.proceed();
         long processTime = System.currentTimeMillis() - start;
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         Object[] params = point.getArgs();
 
         int i = 0;
