@@ -30,5 +30,22 @@ public class SampleController {
 
         return modelAndView;
     }
+    
+    //테스트 화면1 부트스트랩적용
+    @RequestMapping("main")
+   public ModelAndView mainpage() {
+       ModelAndView modelAndView = new ModelAndView();
+       modelAndView.setViewName("sample/test");
+       
+       return modelAndView;
+   }
+  //테스트 화면2 부트스트랩적용
+    @RequestMapping("main2")
+   public ModelAndView mainpage2() {
+       ModelAndView modelAndView = new ModelAndView();
+       modelAndView.setViewName("sample/test2");
+       
+       return modelAndView;
+   }
 
 }
