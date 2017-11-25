@@ -21,7 +21,7 @@ public class SampleController {
 
 
     @RequestMapping(value = "/")
-    public ModelAndView home() {
+    public ModelAndView home() { 
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample/sample");
