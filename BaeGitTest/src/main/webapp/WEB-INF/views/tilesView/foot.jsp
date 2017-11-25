@@ -44,7 +44,7 @@
 									<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 							</section>
-						</section>
+						</section>  
 					</footer>
  
 				<!-- Copyright -->
