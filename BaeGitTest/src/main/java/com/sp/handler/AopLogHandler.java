@@ -26,7 +26,7 @@ public class AopLogHandler {
                 sb.append(param.toString());
                 i++;
             }
-        }
+        } 
 
         log.info("---------------------------------------------------------------------------------------------------------------------------");
         log.info("Processing Time({}) : {} ms", point.getSignature().toShortString(), processTime);
