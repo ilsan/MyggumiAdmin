@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>회원 리스트</h3>
-<h3>TEST(배재현)</h3>
+<h3>TEST(배재현) 20171205 test</h3>
 <table border="1">
     <tr>
         <%--<td colspan="5" style="text-align:center;">회원명수 : ${resultCount}명</td>--%>
