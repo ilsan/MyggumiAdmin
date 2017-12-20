@@ -114,4 +114,19 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/java,eclipse,windows
-/springworkspace/
+.idea/artifacts/MyggumiAdmin_Web_exploded.xml
+.idea/checkstyle-idea.xml
+.idea/compiler.xml
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/sonarlint/
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/artifacts
+MyggumiAdmin.iml
+MyggumiAdmin/src/test/java/
+MyggumiAdmin/te.iml
+*.iml
+classes/
