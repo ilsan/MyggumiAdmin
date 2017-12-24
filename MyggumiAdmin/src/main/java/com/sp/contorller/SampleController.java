@@ -47,5 +47,16 @@ public class SampleController {
        
        return modelAndView;
    }
+    
+    
+    
+    //다음주소 API 테스트
+    @RequestMapping("/join")
+    public ModelAndView join() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("sample/join");
+        
+        return modelAndView;
+    }
 
 }
