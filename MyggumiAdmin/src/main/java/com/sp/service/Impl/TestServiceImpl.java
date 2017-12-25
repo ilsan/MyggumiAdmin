@@ -9,12 +9,4 @@ public class TestServiceImpl implements TestService{
     }
 
 
-    public static void test(){
-        TestService testService = () -> {
-
-        };
-
-    }
-
-
 }
