@@ -9,7 +9,7 @@
 		<put-attribute name="menu"	value="/WEB-INF/views/tilesView/menu.jsp" />
 		<put-attribute name="foot"		value="/WEB-INF/views/tilesView/foot.jsp" />
 	</definition>
-	
+
 	<definition name="/" extends="base">
 		<put-attribute name="body"  value="/WEB-INF/views/home.jsp" />
 	</definition>
@@ -24,7 +24,15 @@
 		<!-- <put-attribute name="body"  value="/WEB-INF/views/같은패턴으로 갈 경로/{1}/{2}.jsp" /> -->
 	</definition>
 
- 	
+	<definition name="empty" template="/WEB-INF/views/layout/empty.jsp">
+		<put-attribute name="body"  value=""/>
+	</definition>
+
+	<definition name="login" extends="empty">
+		<put-attribute name="body"  value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+
 </tiles-definitions>
 
 

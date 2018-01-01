@@ -19,20 +19,9 @@ public class SampleController {
         this.sampleService = sampleService;
     }
 
-
-    @RequestMapping(value = "/")
-    public ModelAndView home() { 
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("sample/sample");
-        modelAndView.addObject("resultList",sampleService.getUserList());
-
-
-        return modelAndView;
-    }
     
     //테스트 화면1 부트스트랩적용
-    @RequestMapping("main")
+    @RequestMapping("main.do")
    public ModelAndView mainpage() {
        ModelAndView modelAndView = new ModelAndView();
        modelAndView.setViewName("sample/test");
@@ -40,7 +29,7 @@ public class SampleController {
        return modelAndView;
    }
   //테스트 화면2 부트스트랩적용
-    @RequestMapping("main2")
+    @RequestMapping("/test/main.do")
    public ModelAndView mainpage2() {
        ModelAndView modelAndView = new ModelAndView();
        modelAndView.setViewName("sample/test2");
@@ -51,7 +40,7 @@ public class SampleController {
     
     
     //다음주소 API 테스트
-    @RequestMapping("/join")
+    @RequestMapping("/join.do")
     public ModelAndView join() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample/join");
