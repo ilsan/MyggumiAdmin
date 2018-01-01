@@ -47,6 +47,7 @@
 
     <beans:bean id="loginService" class="com.sp.common.security.AdminUserDetailServiceImpl" />
 
+    <!-- 스프링 시큐리티에서 기본적을 사용하는 암호화 방식으로 암호화가 될때마다 새로운 값을 생성한다. 임의적인 값을 추가해서 암호화하지 않아도 된다. (salt 사용하지 않는다.) -->
     <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
     <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

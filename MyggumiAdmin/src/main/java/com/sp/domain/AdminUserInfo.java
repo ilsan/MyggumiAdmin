@@ -11,6 +11,7 @@ import java.util.*;
 
 @Data
 public class AdminUserInfo implements UserDetails {
+    //UserDetails를 구한한 AdminUserInfo를 사용자라고 생각하면된다
 
     //계정 아이디
     private String id;
@@ -35,8 +36,10 @@ public class AdminUserInfo implements UserDetails {
     }
 
 
+    /**
+     * @return 계정이 가지고 있는 권한 목록을 리턴
+     */
     @Override
-
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         return authorities;
@@ -51,55 +54,65 @@ public class AdminUserInfo implements UserDetails {
     }
 
 
+    /**
+     * @return 계정의 패스워드를 리턴
+     */
     @Override
-
     public String getPassword() {
-
-
         return password;
 
     }
 
+    /**
+     * @return 계정의 이름을 리턴
+     */
     @Override
-
     public String getUsername() {
-
 
         return getId();
 
     }
 
+    /**
+     * @return 계정이 만료되지 않았는지를 리턴
+     * true : 만료되지 않음.
+     */
     @Override
-
     public boolean isAccountNonExpired() {
 
-
         return true;
 
     }
 
+    /**
+     * @return 계정이 잠겨있지 않은지를 리턴
+     * true : 계정이 잠겨있지 않음
+     * false: 계정이 잠겨있음
+     */
     @Override
-
     public boolean isAccountNonLocked() {
 
-
         return true;
 
     }
 
+    /**
+     * @return 패스워드가 만료되지 않았는지를 리턴
+     * true : 패스워드가 만료되지 않음
+     */
     @Override
-
     public boolean isCredentialsNonExpired() {
 
-
         return true;
 
     }
 
+    /**
+     * @return 계정이 사용가능한 계정인지를 리턴
+     * true : 사용한 계정
+     */
     @Override
-
     public boolean isEnabled() {
-
 
         return true;
 
