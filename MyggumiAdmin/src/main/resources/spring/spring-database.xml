@@ -32,6 +32,7 @@
 	</bean>
 
     <mybatis:scan base-package="com.sp.mapper"/>
+
 	<context:component-scan base-package="com.sp.*" />
 
 </beans>

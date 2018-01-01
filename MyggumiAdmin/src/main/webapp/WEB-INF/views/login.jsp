@@ -53,14 +53,13 @@
             if ($("#loginid").val() == "") {
                 alert("로그인 아이디를 입력해주세요");
                 $("#loginid").focus();
-            } else if ($("#loginpwd").val() == "") {
+            } else if ($("#loginPassWord").val() == "") {
                 alert("로그인 비밀번호를 입력해주세요");
-                $("#loginpwd").focus();
+                $("#loginPassWord").focus();
             } else {
-                $("#loginfrm").attr("action", "<c:url value='/j_spring_security_check'/>");
+                $("#loginfrm").attr("action", ${loginUrl});
                 $("#loginfrm").submit();
             }
         });
+    })
 </script>
-
-});

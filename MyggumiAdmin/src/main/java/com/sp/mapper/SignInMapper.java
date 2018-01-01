@@ -2,11 +2,11 @@ package com.sp.mapper;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 @Repository
 public interface SignInMapper {
 
-    ConcurrentHashMap getAdminInfo(String userId);
+    HashMap<String, Object> getAdminInfo(String adminName);
 
 
 }

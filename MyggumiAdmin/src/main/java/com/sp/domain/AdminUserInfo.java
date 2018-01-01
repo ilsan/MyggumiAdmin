@@ -24,17 +24,14 @@ public class AdminUserInfo implements UserDetails {
 
 
     public AdminUserInfo(String id, String password, String name, Collection<? extends GrantedAuthority> authorities) {
-
+        // 객체를 생성하는 시점에 사용자 계정이름 패스워드 권한 등을 셋탕하고 있다
+        // 패스워드 만료를 체크하거나 계쩡 사용 가능 여부등의 기능은 사용하지않을 것이여서 true로 리턴 사용하게된다면 return결과를 구현하면됨
         this.id = id;
-
         this.password = password;
-
         this.name = name;
-
         this.authorities = Collections.unmodifiableSet(sortAuthorities(authorities));
 
     }
-
 
     /**
      * @return 계정이 가지고 있는 권한 목록을 리턴
@@ -46,9 +43,7 @@ public class AdminUserInfo implements UserDetails {
 
     }
 
-
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-
         this.authorities = Collections.unmodifiableSet(sortAuthorities(authorities));
 
     }
@@ -68,7 +63,6 @@ public class AdminUserInfo implements UserDetails {
      */
     @Override
     public String getUsername() {
-
         return getId();
 
     }
@@ -79,7 +73,6 @@ public class AdminUserInfo implements UserDetails {
      */
     @Override
     public boolean isAccountNonExpired() {
-
         return true;
 
     }
@@ -91,7 +84,6 @@ public class AdminUserInfo implements UserDetails {
      */
     @Override
     public boolean isAccountNonLocked() {
-
         return true;
 
     }
@@ -102,18 +94,16 @@ public class AdminUserInfo implements UserDetails {
      */
     @Override
     public boolean isCredentialsNonExpired() {
-
         return true;
 
     }
 
     /**
      * @return 계정이 사용가능한 계정인지를 리턴
-     * true : 사용한 계정
+     * true : 사용가능한 계정
      */
     @Override
     public boolean isEnabled() {
-
         return true;
 
     }
