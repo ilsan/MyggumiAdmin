@@ -21,10 +21,10 @@ public class SampleController {
 
     
     //테스트 화면1 부트스트랩적용
-    @RequestMapping("main.do")
+    @RequestMapping("/main.do")
    public ModelAndView mainpage() {
        ModelAndView modelAndView = new ModelAndView();
-       modelAndView.setViewName("sample/test");
+       modelAndView.setViewName("/sample/test");
        
        return modelAndView;
    }
@@ -32,7 +32,7 @@ public class SampleController {
     @RequestMapping("/test/main.do")
    public ModelAndView mainpage2() {
        ModelAndView modelAndView = new ModelAndView();
-       modelAndView.setViewName("sample/test2");
+       modelAndView.setViewName("/sample/test2");
        
        return modelAndView;
    }
@@ -43,7 +43,7 @@ public class SampleController {
     @RequestMapping("/join.do")
     public ModelAndView join() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("sample/join");
+        modelAndView.setViewName("/sample/join");
         
         return modelAndView;
     }

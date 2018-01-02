@@ -233,6 +233,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- guava 추가 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

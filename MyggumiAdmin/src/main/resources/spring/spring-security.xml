@@ -20,9 +20,9 @@
 
         <!-- intercept-url : spring Security가 감시 해야할 URL과 접근 가능한 권한을 정의하는 태그 -->
         <!-- 주의 : 구체적인 pattern부터 작성해야한다. 예를들어 /** 전체 적용하는 pattern이 먼저나오면 여기서 전부 걸리지기 때문에 원하는 access접근 권한을 설정할수 없다.-->
-        <intercept-url pattern="/admin/signIn.do" access="isAnonymous()"/>
-        <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin/signIn.do"   access="isAnonymous()"/>
+        <intercept-url pattern="/admin/**"          access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/**"                access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 
 
         <!-- form 방식의 로그인을 하기 위해서는 http 태그안에 form-login 태그를 넣어야 한다 -->
@@ -33,15 +33,19 @@
                 login-page="/admin/signIn.do"
                 username-parameter="loginId"
                 password-parameter="loginPassWord"
-                default-target-url="/"
+                default-target-url="/test/main.do"
                 authentication-failure-url="/admin/signIn.do?fail=true"
+                always-use-default-target='true'
+
         />
+        <logout invalidate-session="true" logout-url="/logout" logout-success-url="/login?logout" />
 
     </http>
 
 
     <authentication-manager>
         <authentication-provider user-service-ref="loginService">
+            <password-encoder ref="passwordEncoder"/>
         </authentication-provider>
     </authentication-manager>
 

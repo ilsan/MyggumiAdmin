@@ -18,6 +18,10 @@
     <logger name="com.sp" level="debug" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
+
+    <logger name="org.springframework" level="info"/>
+
+
 <!--
 
     <root level="error">

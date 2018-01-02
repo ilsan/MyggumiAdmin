@@ -112,11 +112,7 @@ public class AdminUserInfo implements UserDetails {
     private static SortedSet<GrantedAuthority> sortAuthorities(Collection<? extends GrantedAuthority> authorities) {
 
         Assert.notNull(authorities, "Cannot pass a null GrantedAuthority collection");
-
-
-        SortedSet<GrantedAuthority> sortedAuthorities =
-
-                new TreeSet<GrantedAuthority>(new AuthorityComparator());
+        SortedSet<GrantedAuthority> sortedAuthorities = new TreeSet<GrantedAuthority>(new AuthorityComparator());
 
         for (GrantedAuthority grantedAuthority : authorities) {
 
@@ -136,7 +132,6 @@ public class AdminUserInfo implements UserDetails {
         private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
         public int compare(GrantedAuthority g1, GrantedAuthority g2) {
-
 
             if (g2.getAuthority() == null) {
 
