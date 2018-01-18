@@ -36,7 +36,7 @@
 	        <%--<td colspan="5" style="text-align:center;">회원명수 : ${resultCount}명</td>--%>
 	    </tr>
 	    <tr>
-	        <th>로그인ID!</th>
+	        <th>로그인ID!~2018.01.18</th>
 	        <th>이름</th>
 	        <th>이메일</th>
 	        <th>전화번호</th>
