@@ -17,11 +17,19 @@
     <resources mapping="/resources/**" location="classpath*:/resources/"/>
 	
 	<!-- 프론트 리소스 -->
-	<resources mapping="assets/css/**" location="/resources/assets/css/" />
+   <resources mapping="assets/css/**" location="/resources/assets/css/" />
    <resources mapping="assets/fonts/**" location="/resources/assets/fonts/" />
    <resources mapping="assets/js/**" location="/resources/assets/js/" />
    <resources mapping="assets/sass/**" location="/resources/assets/sass/" /> 
-   <resources mapping="/images/**" location="/resources/images/" /> 
+   <resources mapping="assets/images/**" location="/resources/assets/images/" />
+   
+   <resources mapping="assets/bootstrap/**" location="/resources/assets/bootstrap/css" />
+   <resources mapping="assets/bootstrap/**" location="/resources/assets/bootstrap/fonts" />
+   <resources mapping="assets/bootstrap/**" location="/resources/assets/bootstrap/js" />
+   <resources mapping="assets/font-awesome/**" location="/resources/assets/font-awesome/css" />
+   <resources mapping="assets/font-awesome/**" location="/resources/assets/font-awesome/fonts" />
+   <resources mapping="assets/font-awesome/**" location="/resources/assets/font-awesome/less" />
+   <resources mapping="assets/font-awesome/**" location="/resources/assets/font-awesome/scss" />    
 	
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
