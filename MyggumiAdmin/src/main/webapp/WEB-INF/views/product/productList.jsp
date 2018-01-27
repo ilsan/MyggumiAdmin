@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>test</h1>
+<div class="container body-min-height">
+<h1>teszzzzzzzzzzzzztz</h1>
+</div>
+
 </body>
 </html>

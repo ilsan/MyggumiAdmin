@@ -6,8 +6,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-          	<img src="assets/images/logo30.png" alt="">Admin Page</a>
+          <a class="navbar-brand" href="/">
+          	<img src="<%=request.getContextPath()%>/assets/images/logo30.png" alt="">Admin Page</a>
         </div> 
         
           <div class="navbar-collapse collapse">
@@ -16,8 +16,8 @@
               <i class="icon-home icon-white"></i> Statistics</a>
               </li>                            
               <li>
-              <a href="${pageContext.request.contextPath}/goods">
-              <i class="icon-th icon-white"></i> Goods</a>
+              <a href="/product/productList">
+              <i class="icon-th icon-white"></i>상품등록</a>
               </li>
               <li>
               <a href="${pageContext.request.contextPath}/statistics">

@@ -20,6 +20,7 @@
 	</definition>
 
 	<definition name="*/*" extends="base">
+		<put-attribute name="body"  value="/WEB-INF/views/{1}.jsp" />
 		<put-attribute name="body"  value="/WEB-INF/views/{1}/{2}.jsp" />
 		<!-- <put-attribute name="body"  value="/WEB-INF/views/같은패턴으로 갈 경로/{1}/{2}.jsp" /> -->
 	</definition>
