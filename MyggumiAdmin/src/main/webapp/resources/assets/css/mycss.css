@@ -1,3 +1,45 @@
 .body-min-height{
 	min-height: 700px;
 }
+
+.body-font-color{
+	color: #f2f2f2;
+}
+
+.tr-title{
+	/* padding: 25px 0 5px 0; */
+	text-align: center;
+    height: 50px;
+    background-color: #454545;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
+tr{
+	background-color: #303030;
+	border-left: 3px solid #1d6e4b;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	height: 30px;
+	/* 추후 NEW = 파랑, HIT = 빨강, DC = 노랑 으로 하여 구분하기.*/
+	/* border-left: 3px solid #1d6e4b; 초록 */
+	/* border-left: 3px solid #952f12; 빨강 */
+	/* border-left: 3px solid #1c616c; 파랑 */
+	/* border-left: 3px solid #9d7919; 노랑 */
+	
+	
+	
+}
+
+.btn-color{
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.text-align-center{
+	text-align: center;
+}
+
+.my-tbl{
+	text-align: center;
+}
