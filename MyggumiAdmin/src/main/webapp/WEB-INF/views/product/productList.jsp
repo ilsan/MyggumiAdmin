@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container body-min-height">
-<h1>teszzzzzzzzzzzzztz</h1>
+<h3>상품 리스트</h3>
 </div>
 
 </body>

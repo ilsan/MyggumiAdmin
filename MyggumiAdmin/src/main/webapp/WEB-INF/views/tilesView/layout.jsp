@@ -1,6 +1,5 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
@@ -9,8 +8,8 @@
 <html>
 <head>
 
- <meta charset="utf-8">
-    <title>BLOCKS - Bootstrap Dashboard Theme</title>
+  
+    <title>마이구미 어드민 페이지</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Carlos Alvarez - Alvarez.is">

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <div class="navbar-nav navbar-inverse navbar-fixed-top">
         <div class="container">
         <div class="navbar-header">
@@ -12,12 +14,12 @@
         
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="${pageContext.request.contextPath}/stat">
-              <i class="icon-home icon-white"></i> Statistics</a>
+              <li class="active"><a href="/product/productList">
+              <i class="icon-home icon-white"></i>상품 등록</a>
               </li>                            
               <li>
               <a href="/product/productList">
-              <i class="icon-th icon-white"></i>상품등록</a>
+              <i class="icon-th icon-white"></i>회원관리</a>
               </li>
               <li>
               <a href="${pageContext.request.contextPath}/statistics">
