@@ -16,7 +16,7 @@ function productWrite() {
 </head>
 <body class="body-font-color">
 <div class="container body-min-height">
-	<h3>상품 리스트</h3>
+	<h3>상품 등록</h3>
 	
 		<!-- margin:0 auto; -->
 	<div style="width: 100%;">
