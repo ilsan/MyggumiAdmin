@@ -296,7 +296,7 @@ input[type=submit] {
 
 }
 input[type=text], textarea {
-	background: #cdcbcc;
+	background: #454545;
 	font-size: 13px;
 	display: block;
 	width: 100%;
@@ -306,7 +306,6 @@ input[type=text], textarea {
 	line-height: 18px;
 	padding: 0;
 	text-indent: 18px;
-	margin: 0 0 18px;
 }
 textarea {
 	line-height: 18px;
@@ -605,7 +604,8 @@ ul#jstwitter li a{
 /********** CUSTOMIZED BUTTON **********/
 .btnnew {
   display: inline-block;
-  *border-left: 0 none #707070;
+  font-weight: bold;
+    border-left: 0 none #707070;
 	border-right: 0 none #707070;
 	border-top: 0 none #707070;
 	border-bottom: 0 none #707070;

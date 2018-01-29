@@ -4,6 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+
+function productWrite() {
+	
+}
+
+
+</script>
 <title>Insert title here</title>
 </head>
 <body class="body-font-color">
@@ -142,7 +150,7 @@
 		
 		<br/>
 		<div>
-			<button class="btn-color">등록하기</button>
+			<button class="btnnew noty" onclick="location.href='/product/productWrite';">등록하기</button>
 		</div>
 </div>	
 </body>

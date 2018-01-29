@@ -28,6 +28,7 @@
     
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/dash-charts.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/gauge.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/myjs.js"></script>
 	
 	<!-- NOTY JAVASCRIPT -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/noty/jquery.noty.js"></script>

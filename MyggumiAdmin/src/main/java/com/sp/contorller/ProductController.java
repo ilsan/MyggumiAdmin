@@ -9,11 +9,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProductController {
 
 	 @RequestMapping("product/productList")
-	  public ModelAndView goods(Model model, ModelAndView modelAndView) {
+	  public ModelAndView productList(Model model, ModelAndView modelAndView) {
 		 
 		System.out.println(">>>>>>>>>>> 접속 product/productList ");
 		modelAndView.setViewName("product/productList");
 	    return modelAndView;
 	  }
-
+	 
+	 @RequestMapping("product/productWrite")
+	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
+		 
+		System.out.println(">>>>>>>>>>> 접속 product/productList ");
+		modelAndView.setViewName("product/productWrite");
+	    return modelAndView;
+	  }
 }
