@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+  <meta name="viewport" id="viewport" content="width=device-width, user-scalable=no">
   
     <title>마이구미 어드민 페이지</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

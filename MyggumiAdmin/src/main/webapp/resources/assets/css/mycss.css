@@ -62,12 +62,11 @@ select {
 .select {
   position: relative;
   display: block;
-  width: 20em;
   height: 3em;
   line-height: 3;
   background: #454545;
-  overflow: hidden;
-  border-radius: .25em;
+  overflow: hidden; 
+  border-radius: .25em; 
 }
 select {
   width: 100%;

@@ -3,7 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" id="viewport" content="width=device-width, user-scalable=no">
 <script type="text/javascript">
 
 function productWrite() {
@@ -37,7 +38,7 @@ function productWrite() {
 			  <tr>
 				  <td>상품타입</td>
 				  <td>
-				 	 <div class="my-padding-10">
+				 	 <div class="my-padding-10 my-width-66">
 						 <div class="select">
 						    <select name="slct" id="slct">
 						      <option>선택</option>
@@ -50,7 +51,7 @@ function productWrite() {
 				  </td>
 				  <td>상품타입</td>
 				  <td>
-				 	 <div class="my-padding-10">
+				 	 <div class="my-padding-10 my-width-66">
 						 <div class="select">
 						    <select name="slct" id="slct">
 						      <option>선택</option>
@@ -79,7 +80,7 @@ function productWrite() {
 			  <tr>
 				  <td>카테고리</td>
 				  <td>
-				 	 <div class="my-padding-10">
+				 	 <div class="my-padding-10 my-width-66">
 						 <div class="select">
 						    <select name="slct" id="slct">
 						      <option>선택</option>
