@@ -7,7 +7,7 @@
       		<div class="row">
       			<div class="col-sm-12 col-lg-12">
       			<p><img src="<%=request.getContextPath()%>/assets/images/logo.png" alt=""></p>
-      			<p>Blocks Dashboard Theme - Crafted With Love - Copyright 2013</p>
+      			<p>Myggumi Admin Page - ilsan study group - Copyright 2018</p>
       			</div>
 
       		</div><!-- /row -->

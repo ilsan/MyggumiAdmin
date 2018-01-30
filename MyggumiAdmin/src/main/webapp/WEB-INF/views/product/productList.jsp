@@ -12,7 +12,7 @@ function productWrite() {
 
 
 </script>
-<title>Insert title here</title>
+<title>상품 리스트</title>
 </head>
 <body class="body-font-color">
 <div class="container body-min-height">
@@ -147,11 +147,17 @@ function productWrite() {
 			  </tr>
 			</table>
 		</div>
-		
+		 
+		 
+		 
 		<br/>
 		<div>
-			<button class="btnnew noty" onclick="location.href='/product/productWrite';">등록하기</button>
+			<button class="btnnew noty" onclick="location.href='/admin/product/productWrite';">등록하기</button>
+			<button class="btnnew noty" ><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 일괄 등록</button>
+			                  ------------------------- 페이징 처리 필요 ------------------------------
 		</div>
+		
+		
 </div>	
 </body>
 </html>

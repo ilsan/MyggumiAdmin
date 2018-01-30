@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ProductController {
 
-	 @RequestMapping("product/productList")
+	 @RequestMapping("admin/product/productList")
 	  public ModelAndView productList(Model model, ModelAndView modelAndView) {
 		 
 		System.out.println(">>>>>>>>>>> 접속 product/productList ");
@@ -16,11 +16,19 @@ public class ProductController {
 	    return modelAndView;
 	  }
 	 
-	 @RequestMapping("product/productWrite")
+	 @RequestMapping("admin/product/productWrite")
 	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
 		 
-		System.out.println(">>>>>>>>>>> 접속 product/productList ");
+		System.out.println(">>>>>>>>>>> 접속 productWrite ");
 		modelAndView.setViewName("product/productWrite");
+	    return modelAndView;
+	  }
+	 
+	 @RequestMapping("/admin/member/memberList")
+	  public ModelAndView memberList(Model model, ModelAndView modelAndView) {
+		 
+		System.out.println(">>>>>>>>>>> 접속 memberList ");
+		modelAndView.setViewName("member/memberList");
 	    return modelAndView;
 	  }
 }

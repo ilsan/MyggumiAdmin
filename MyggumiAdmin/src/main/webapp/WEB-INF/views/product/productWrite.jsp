@@ -30,7 +30,7 @@ function productWrite() {
 			  <tr>
 				  <td>상품명 </td>
 				  <td colspan="3">
-			    	  <div class="my-padding-10 my-width-85">
+			    	  <div class="my-padding-10 my-width-90">
 			    		  <input type="text"/>
 			    	  </div>
 				  </td>
@@ -38,7 +38,7 @@ function productWrite() {
 			  <tr>
 				  <td>상품타입</td>
 				  <td>
-				 	 <div class="my-padding-10 my-width-66">
+				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
 						    <select name="slct" id="slct">
 						      <option>선택</option>
@@ -49,38 +49,9 @@ function productWrite() {
 						  </div>
 					  </div>
 				  </td>
-				  <td>상품타입</td>
-				  <td>
-				 	 <div class="my-padding-10 my-width-66">
-						 <div class="select">
-						    <select name="slct" id="slct">
-						      <option>선택</option>
-						      <option value="01">NEW</option>
-						      <option value="02">HIT</option>
-						      <option value="03">DC</option>
-						    </select>
-						  </div>
-					  </div>
-				  </td>
-			  </tr>		
-			  <tr>
-				  <td>상품가격</td>
-				  <td>
-				 	 <div class="my-padding-10 my-width-66">
-						<input type="text"/>
-					  </div>
-				  </td>
-				  <td>할인율</td>
-				  <td>
-				 	 <div class="my-padding-10 my-width-66">
-						<input type="text" value="0"/>
-					  </div>
-				  </td>
-			  </tr>		
-			  <tr>
 				  <td>카테고리</td>
 				  <td>
-				 	 <div class="my-padding-10 my-width-66">
+				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
 						    <select name="slct" id="slct">
 						      <option>선택</option>
@@ -93,8 +64,24 @@ function productWrite() {
 						  </div>
 					  </div>
 				  </td>
-				  <td>사용여부</td>
+			  </tr>		
+			  <tr>
+				  <td>상품가격</td>
 				  <td>
+				 	 <div class="my-padding-10 my-width-75">
+						<input type="text"/>
+					  </div>
+				  </td>
+				  <td>할인율</td>
+				  <td>
+				 	 <div class="my-padding-10 my-width-75">
+						<input type="text" value="0"/>
+					  </div>
+				  </td>
+			  </tr>		
+			  <tr>
+				  <td>사용여부</td>
+				  <td colspan="3">
 				  	<div class="my-margin-left-10 text-align-left">
 					 <p class="btn-switch">					
 					  <input type="radio" id="yes" name="switch" class="btn-switch__radio btn-switch__radio_yes" />
@@ -108,7 +95,7 @@ function productWrite() {
 			  <tr>
 				  <td>상품내용</td>
 				  <td colspan="3">
-			    	  <div class="my-padding-10 my-width-85">
+			    	  <div class="my-padding-10 my-width-90">
 			    		  <input type="text" style="height: 400px;" value="!!에디터 들어갈 공간!!" />
 			    	  </div>
 				  </td>

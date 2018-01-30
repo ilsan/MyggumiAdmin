@@ -9,16 +9,16 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-          	<img src="<%=request.getContextPath()%>/assets/images/logo30.png" alt="">Admin Page</a>
+          	<img src="<%=request.getContextPath()%>/assets/images/logo30.png" alt="">Myggumi Admin</a>
         </div> 
         
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/product/productList">
+              <li class="active"><a href="/admin/product/productList">
               <i class="icon-home icon-white"></i>상품 등록</a>
               </li>                            
               <li>
-              <a href="/product/productList">
+              <a href="/admin/member/memberList">
               <i class="icon-th icon-white"></i>회원관리</a>
               </li>
               <li>
