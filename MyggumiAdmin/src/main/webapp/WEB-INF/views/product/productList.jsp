@@ -26,7 +26,7 @@ function productWrite() {
 			  <col width="15%">
 			  <col width="15%">
 			  <col width="15%">
-			  <col width="10%">
+			  <col width="11%">
 			  <col width="15%">
 			  <tr class="tr-title" style="text-align: center;">
 			    <th>No</th>
