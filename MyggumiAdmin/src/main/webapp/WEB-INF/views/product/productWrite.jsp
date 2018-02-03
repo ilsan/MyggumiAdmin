@@ -84,8 +84,8 @@ function productWrite() {
 				  <td colspan="3">
 				  	<div class="my-margin-left-10 text-align-left">
 					 <p class="btn-switch">					
-					  <input type="radio" id="yes" name="switch" class="btn-switch__radio btn-switch__radio_yes" />
-					  <input type="radio" checked id="no" name="switch" class="btn-switch__radio btn-switch__radio_no" />		
+					  <input type="radio" checked id="yes" value="Y" name="switch" class="btn-switch__radio btn-switch__radio_yes" />
+					  <input type="radio" id="no" name="switch" value="N" class="btn-switch__radio btn-switch__radio_no" />		
 					  <label for="yes" class="btn-switch__label btn-switch__label_yes"><span class="btn-switch__txt">Yes</span></label>
 					  <label for="no" class="btn-switch__label btn-switch__label_no"><span class="btn-switch__txt">No</span></label>							
 					 </p>
@@ -96,7 +96,7 @@ function productWrite() {
 				  <td>상품내용</td>
 				  <td colspan="3">
 			    	  <div class="my-padding-10 my-width-90">
-			    		  <input type="text" style="height: 400px;" value="!!에디터 들어갈 공간!!" />
+			    	  	  <textarea style="height: 400px;"  value="!!에디터 들어갈 공간!!"></textarea>
 			    	  </div>
 				  </td>
 			  </tr>
