@@ -15,7 +15,7 @@ public class ParamUtil {
 	private static final Logger logger = LoggerFactory.getLogger(ParamUtil.class);
 	
 	@SuppressWarnings("rawtypes")
-	public static Map<String, Object> paramMap(HttpServletRequest request) throws Exception{
+	public static Map<String, Object> paramMap(HttpServletRequest request){
 		Enumeration parameterNames = request.getParameterNames();
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		

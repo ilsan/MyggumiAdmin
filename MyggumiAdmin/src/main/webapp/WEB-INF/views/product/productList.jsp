@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +13,22 @@
 
 function productWrite() {
 	
+}
+
+function funcGoPageNo(page){
+	var frm = document.frmPage;
+	frm.currentPage.value = page;
+	funcSubmit('Y');
+}
+
+function funcSubmit(pageYN){
+	var frm = document.frmPage;
+	if(pageYN != 'Y'){
+		frm.currentPage.value = 1;
+	}
+	frm.method = "POST";
+	frm.action = "/admin/product/productList";
+	frm.submit();
 }
 
 
@@ -37,6 +58,7 @@ function productWrite() {
 			    <th>사용여부</th>
 			    <th>등록일</th>
 			  </tr>
+			  <!-- 
 			  <tr>
 			    <td>1</td>
 			    <td>iphone</td>
@@ -144,7 +166,18 @@ function productWrite() {
 			    <td>1,300,000</td>
 			    <td>Y</td>
 			    <td>2018-01-27</td>
-			  </tr>
+			  </tr> -->
+			  <c:forEach var="item" items="${productList}">
+				  <tr>
+				    <td>${item.RNUM}</td>
+				    <td>${item.productName}</td>
+				    <td>${item.productType}</td>
+				    <td>${item.productCategory}</td>
+				    <td>${item.productPrice}</td>
+				    <td>${item.useYn}</td>
+				    <td>${item.regDate}</td>
+				  </tr>
+			  </c:forEach>
 			</table>
 		</div>
 		 
@@ -154,7 +187,17 @@ function productWrite() {
 		<div>
 			<button class="btnnew noty" onclick="location.href='/admin/product/productWrite';">등록하기</button>
 			<button class="btnnew noty" ><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 일괄 등록</button>
-			                  ------------------------- 페이징 처리 필요 ------------------------------
+			
+			                 <!--  ------------------------- 페이징 처리 필요 ------------------------------ -->
+			<span class="page" >	<!-- row c rowMargin -->
+				<c:import url="/include/page">
+					<c:param name="currentPage" value="${param.currentPage == null ? 1 : param.currentPage}"/>	<%-- ${param.currentPage == null ? 1 : param.currentPage }" --%>
+					<c:param name="totalCnt" value="${totalCnt}"/>	<%-- ${noticeCnt} --%>
+				</c:import>
+			</span>
+			<form name="frmPage"> <!-- action="/admin/product/productList" -->
+				<input type="hidden" name="currentPage" value="${param.currentPage == null ? 1 : param.currentPage}">
+			</form>
 		</div>
 		
 		
