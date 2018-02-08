@@ -1,6 +1,5 @@
 package com.sp.contorller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sp.common.util.PageUtil;
 import com.sp.common.util.ParamUtil;
 import com.sp.service.ProductService;
 
@@ -21,17 +21,15 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("/product/productList")
 	public ModelAndView productList(HttpServletRequest request, Model model, ModelAndView modelAndView) {
 		
 		Map map = ParamUtil.paramMap(request);
-		List<Map> list = productService.getProductList(map);
-		int productCnt = productService.getProductCount();
+		PageUtil.pageBar(request, modelAndView, map, 10);
 		
-		System.out.println(list.get(0).toString());
-		modelAndView.addObject("productList", list);
-		modelAndView.addObject("totalCnt", productCnt);
+		modelAndView.addObject("productList", productService.getProductList(map));
+		modelAndView.addObject("totalCnt", productService.getProductCount());
 		
 		System.out.println(">>>>>>>>>>> 접속 product/productList ");
 		modelAndView.setViewName("product/productList");

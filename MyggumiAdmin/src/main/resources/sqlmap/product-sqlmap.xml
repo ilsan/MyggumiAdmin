@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sp.mapper.ProductMapper">
+
+	<!-- 상품목록 조회 -->
+    <select id="getProductList" parameterType="Map" resultType="Map">
+	<![CDATA[
+	    SELECT 
+	    	RNUM		
+    		,"productNo"
+			,"productName"
+			,"productContent"
+			,"productType"
+			,"productDc"
+			,"productPrice"
+			,"productCategory"
+			,"regUser"
+			,"regDate"
+			,"updUser"
+			,"updDate"
+			,"useYn"
+	    FROM (
+		    SELECT
+		    	ROW_NUMBER() OVER(ORDER BY "regDate" DESC) RNUM
+		    	,A.*
+		    FROM (
+		    	SELECT
+			    	"productNo"
+					,"productName"
+					,"productContent"
+					,"productType"
+					,"productDc"
+					,"productPrice"
+					,"productCategory"
+					,"regUser"
+					,to_char("regDate", 'YYYY-MM-dd') as "regDate"
+					,"updUser"
+					,"updDate"
+					,"useYn" 
+		    	FROM
+		    		PRODUCT
+		    ) A
+	    ) B
+	    WHERE RNUM BETWEEN #{startNo} AND #{endNo} 
+	    ORDER BY RNUM
+		]]>
+	</select>
+	
+	<!-- 상품개수 조회 -->
+	<select id="getProductCount" resultType="int">
+		SELECT COUNT(*) FROM PRODUCT
+	</select>
+
+</mapper>

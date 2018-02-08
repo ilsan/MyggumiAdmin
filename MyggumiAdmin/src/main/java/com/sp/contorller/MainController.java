@@ -60,6 +60,6 @@ public class MainController {
 			request.setAttribute("pageYN", "N");
 		}
 		
-		return "include/page";
+		return "include/page/page";
 	}
 }

@@ -15,23 +15,6 @@ function productWrite() {
 	
 }
 
-function funcGoPageNo(page){
-	var frm = document.frmPage;
-	frm.currentPage.value = page;
-	funcSubmit('Y');
-}
-
-function funcSubmit(pageYN){
-	var frm = document.frmPage;
-	if(pageYN != 'Y'){
-		frm.currentPage.value = 1;
-	}
-	frm.method = "POST";
-	frm.action = "/admin/product/productList";
-	frm.submit();
-}
-
-
 </script>
 <title>상품 리스트</title>
 </head>
@@ -181,26 +164,19 @@ function funcSubmit(pageYN){
 			</table>
 		</div>
 		 
-		 
-		 
 		<br/>
 		<div>
 			<button class="btnnew noty" onclick="location.href='/admin/product/productWrite';">등록하기</button>
 			<button class="btnnew noty" ><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 일괄 등록</button>
 			
 			                 <!--  ------------------------- 페이징 처리 필요 ------------------------------ -->
-			<span class="page" >	<!-- row c rowMargin -->
+			<span id="pagebar" >	
 				<c:import url="/include/page">
-					<c:param name="currentPage" value="${param.currentPage == null ? 1 : param.currentPage}"/>	<%-- ${param.currentPage == null ? 1 : param.currentPage }" --%>
-					<c:param name="totalCnt" value="${totalCnt}"/>	<%-- ${noticeCnt} --%>
+					<c:param name="currentPage" value="${param.currentPage == null ? 1 : param.currentPage}"/>
+					<c:param name="totalCnt" value="${totalCnt}"/>	
 				</c:import>
 			</span>
-			<form name="frmPage"> <!-- action="/admin/product/productList" -->
-				<input type="hidden" name="currentPage" value="${param.currentPage == null ? 1 : param.currentPage}">
-			</form>
 		</div>
-		
-		
-</div>	
+	</div>	
 </body>
 </html>
