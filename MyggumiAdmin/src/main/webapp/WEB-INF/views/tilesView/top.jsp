@@ -26,8 +26,8 @@
               <i class="icon-lock icon-white"></i> Login</a>
               </li>
               <li>
-              <a href="user.html">
-              <i class="icon-user icon-white"></i> User</a>
+              <a href="/admin/test/test">
+              <i class="icon-user icon-white"></i>뽑기</a>
               </li>
             </ul>
           </div><!--/.nav-collapse -->

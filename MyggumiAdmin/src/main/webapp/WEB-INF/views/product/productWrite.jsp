@@ -7,10 +7,51 @@
   <meta name="viewport" id="viewport" content="width=device-width, user-scalable=no">
 <script type="text/javascript">
 
-function productWrite() {
-	
-}
 
+$(function(){
+    //전역변수
+    var obj = [];               
+    //스마트에디터 프레임생성
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef: obj,
+        elPlaceHolder: "editor",
+        sSkinURI: "<%=request.getContextPath()%>/assets/editor/SmartEditor2Skin.html", 
+        htParams : {
+            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseToolbar : true,             
+            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseVerticalResizer : true,     
+            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseModeChanger : true, 
+        }
+    });
+   
+    //전송버튼
+    $("#savebutton").click(function(){
+        //id가 smarteditor인 textarea에 에디터에서 대입
+        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
+        
+			var bool = false; 
+		        $(".Data").each(function() { // infoData 반복
+					
+					var val = $(this).val(); // 1 각각 자기의 벨류가
+					
+					if(val==""){ // 2 비어있으면 bool 을 true로 바꿔준다.
+						bool = true;  
+					} 
+					
+				}); // end of each()---------------------
+			
+			if(bool) { // 5 bool이 true 라면 비어있는 항목이 있다는뜻이기 때문에
+				alert(" 제목*, 본문*, 첨부파일* 항목에 빠짐없이 입력하여 주세요."); //  6 클릭 이벤트를 막는다.
+			}else{ // 모두 들어와서 false 라면 
+				 //폼 submit
+		        $("#frm").submit();
+			}
+        
+       
+    });
+});
 
 </script>
 <title>Insert title here</title>
@@ -96,7 +137,7 @@ function productWrite() {
 				  <td>상품내용</td>
 				  <td colspan="3">
 			    	  <div class="my-padding-10 my-width-90">
-			    	  	  <textarea style="height: 400px;"  value="!!에디터 들어갈 공간!!"></textarea>
+			    	  	  <textarea style="height: 400px;" id="editor" name="editor" ></textarea>
 			    	  </div>
 				  </td>
 			  </tr>

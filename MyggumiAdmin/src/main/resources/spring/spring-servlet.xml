@@ -31,6 +31,14 @@
    <resources mapping="assets/font-awesome/**" location="/resources/assets/font-awesome/less" />
    <resources mapping="assets/font-awesome/**" location="/resources/assets/font-awesome/scss" />    
 	
+	<!-- 스마트 에디터 -->
+	<resources mapping="assets/editor/**" location="/resources/assets/editor/" />
+	<resources mapping="assets/editor/**" location="/resources/assets/editor/css" />
+	<resources mapping="assets/editor/**" location="/resources/assets/editor/img" />
+	<resources mapping="assets/editor/**" location="/resources/assets/editor/js" />
+	<resources mapping="assets/editor/**" location="/resources/assets/editor/photo_uploader" />
+	
+	
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/"/>

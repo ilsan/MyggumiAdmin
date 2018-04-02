@@ -26,8 +26,6 @@
 
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/lineandbars.js"></script>
     
-	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/dash-charts.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/gauge.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/myjs.js"></script>
 	
 	<!-- NOTY JAVASCRIPT -->
@@ -37,10 +35,13 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/noty/layouts/topRight.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/noty/layouts/topCenter.js"></script>
 	
+	<!-- eidter -->
+	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/editor/js/HuskyEZCreator.js"></script>
+	
 	<!-- You can add more layouts if you want -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/noty/themes/default.js"></script>
     <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
-	<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+	<!-- <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script> -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.flexslider.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/admin.js"></script>
@@ -60,7 +61,7 @@
   	<!-- Google Fonts call. Font Used Open Sans & Raleway -->
 	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
   	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-
+<!-- 
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -91,7 +92,7 @@
         }); */
     });
 
-</script>    
+</script>   -->  
 
 
 
