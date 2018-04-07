@@ -26,7 +26,7 @@ public class ProductController {
 	public ModelAndView productList(HttpServletRequest request, Model model, ModelAndView modelAndView) {
 		
 		Map map = ParamUtil.paramMap(request);
-		PageUtil.pageBar(request, modelAndView, map, 10);
+		PageUtil.pageBar(request, modelAndView, map, 5);
 		
 		modelAndView.addObject("productList", productService.getProductList(map));
 		modelAndView.addObject("totalCnt", productService.getProductCount());

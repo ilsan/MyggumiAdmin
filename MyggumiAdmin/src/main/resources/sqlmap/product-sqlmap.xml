@@ -21,7 +21,7 @@
 			,"useYn"
 	    FROM (
 		    SELECT
-		    	ROW_NUMBER() OVER(ORDER BY "regDate" DESC) RNUM
+		    	ROW_NUMBER() OVER(ORDER BY "regDate" ASC) RNUM
 		    	,A.*
 		    FROM (
 		    	SELECT

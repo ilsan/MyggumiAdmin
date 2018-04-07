@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-</div> <!-- /container -->
+ <!-- /container -->
 	<div id="footerwrap">
       	<footer class="clearfix"></footer>
       	<div class="container">

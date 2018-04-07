@@ -35,6 +35,8 @@ public class ParamUtil {
 			paramMap.put(key, value);
 		}
 		
+		logger.debug("request params \t : " + paramMap.toString());
+		
 		return paramMap;
 	}
 }

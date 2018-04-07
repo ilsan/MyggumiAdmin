@@ -15,11 +15,11 @@ public class PageUtil {
 	 * 
 	 * */
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static void pageBar(HttpServletRequest request, ModelAndView modelAndView, Map map, int pageCnt) {
+	public static void pageBar(HttpServletRequest request, ModelAndView modelAndView, Map map, int count) {
 		int currentPage =  request.getParameter("currentPage") == null ? 1 : Integer.parseInt((String) request.getParameter("currentPage"));	// 현재 페이지 번호
 		
-		map.put("endNo", currentPage * pageCnt);
-		map.put("startNo", ((currentPage - 1) * pageCnt + 1));
+		map.put("endNo", currentPage * count);
+		map.put("startNo", ((currentPage - 1) * count + 1));
 		modelAndView.addObject("currentPage", currentPage);
 		modelAndView.addObject("requestURI", request.getRequestURI());
 		
