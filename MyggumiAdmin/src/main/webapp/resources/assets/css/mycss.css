@@ -1,6 +1,10 @@
 .body-min-height{ min-height: 700px; }
 .body-font-color{ color: #f2f2f2; }
 
+
+.my-tbl{ text-align: center; 
+          }
+
 .tr-title{
 	/* padding: 25px 0 5px 0; */
 	text-align: center;
@@ -29,7 +33,7 @@ tr{
 
 .text-align-center{ text-align: center; }
 .text-align-left{ text-align: left; }
-.my-tbl{ text-align: center; }
+
 
 .my-width-30{ width: 30% }
 .my-width-50 { 	width: 45% }
