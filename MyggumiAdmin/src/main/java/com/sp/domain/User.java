@@ -3,7 +3,7 @@ package com.sp.domain;
 import lombok.Data;
 
 @Data
-public class User {
+public class User extends Common {
 
     private String USR_LGN;
     private String USR_NM;
