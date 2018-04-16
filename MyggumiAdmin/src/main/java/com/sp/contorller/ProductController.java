@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sp.domain.Product;
 import com.sp.domain.User;
 import com.sp.service.Impl.TestServiceImpl;
 
@@ -18,7 +20,7 @@ public class ProductController {
 	private TestServiceImpl testServiceImpl;
 	
 	 @RequestMapping("admin/product/productList")
-	  public ModelAndView productList(Model model, ModelAndView modelAndView) {
+	  public ModelAndView productList(ModelAndView modelAndView) {
 		 
 		System.out.println(">>>>>>>>>>> 접속 product/productList ");
 		
@@ -26,6 +28,7 @@ public class ProductController {
 		
 		System.out.println(d.size());
 		
+		modelAndView.addObject("userList", d);
 		modelAndView.setViewName("product/productList");
 	    return modelAndView;
 	  }
@@ -37,7 +40,11 @@ public class ProductController {
 		modelAndView.setViewName("product/productWrite");
 	    return modelAndView;
 	  }
-	 
+	 @RequestMapping("admin/product/productWriteAfter")
+	 public String productWriteAfter(@ModelAttribute Product vo) {
+		 testServiceImpl.productInsert(vo);
+		 return "redirect:admin/product/productList";
+	 }
 	 @RequestMapping("/admin/member/memberList")
 	  public ModelAndView memberList(Model model, ModelAndView modelAndView) {
 		 

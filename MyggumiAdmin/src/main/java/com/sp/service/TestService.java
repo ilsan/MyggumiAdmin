@@ -2,10 +2,14 @@
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import com.sp.domain.Product;
 import com.sp.domain.User;
 
-@FunctionalInterface
+@Mapper
 public interface TestService {
 
 	 List<User> getUserList();
+	 int productInsert(Product vo);
 }

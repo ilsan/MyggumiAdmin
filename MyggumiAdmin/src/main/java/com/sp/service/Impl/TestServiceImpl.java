@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sp.domain.Product;
 import com.sp.domain.User;
 import com.sp.mapper.TestMapper;
 import com.sp.service.TestService;
@@ -19,6 +20,12 @@ public class TestServiceImpl implements TestService{
 	public List<User> getUserList() {
 		
 		return testMapper.getUserList();
+	}
+
+	@Override
+	public int productInsert(Product vo) {
+
+		return testMapper.productInsert(vo);
 	}
     
 }

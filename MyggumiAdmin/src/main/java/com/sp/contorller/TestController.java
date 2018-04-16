@@ -46,7 +46,9 @@ public class TestController {
 		 }else if(intNum>990 && intNum<1001) { // 0.1%
 			 result = "o";
 		 }
-			 
+		
+		 
+		 
 		 return new ResponseEntity<String>(result, HttpStatus.OK);
 	  }
 }

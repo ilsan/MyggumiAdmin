@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class User extends Common {
 
-    private String USR_LGN;
-    private String USR_NM;
-    private String USR_EML;
-    private String USR_TEL;
-    private String CRT_DT;
+	private String usrLgn;
+	private String usrNm;
+	private String usrEml;
+	private String usrTel;
+	private String crtDt;
 
 }

@@ -57,12 +57,12 @@ $(function(){
 <title>Insert title here</title>
 </head>
 <body class="body-font-color">
-<div class="container body-min-height">
+ <div class="container body-min-height">
 	<h3>상품 등록</h3>
-	
-		<!-- margin:0 auto; -->
+		margin:0 auto;
 	<div style="width: 100%;">
-		<form action="">
+		<form action="/admin/product/productWriteAfter">
+		<input type="hidden" name="REG_USER" value="test"/>
 			<table width="100%" class="my-tbl" style="border: 1px black solid;">
 			  <col width="10%">
 			  <col width="40%">
@@ -72,7 +72,7 @@ $(function(){
 				  <td>상품명 </td>
 				  <td colspan="3">
 			    	  <div class="my-padding-10 my-width-90">
-			    		  <input type="text"/>
+			    		  <input type="text" name="productName"/>
 			    	  </div>
 				  </td>
 			  </tr>
@@ -81,11 +81,11 @@ $(function(){
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
-						    <select name="slct" id="slct">
+						    <select name="productType" id="slct">
 						      <option>선택</option>
-						      <option value="01">NEW</option>
-						      <option value="02">HIT</option>
-						      <option value="03">DC</option>
+						      <option value="NEW">NEW</option>
+						      <option value="HIT">HIT</option>
+						      <option value="DC">DC</option>
 						    </select>
 						  </div>
 					  </div>
@@ -94,7 +94,7 @@ $(function(){
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
-						    <select name="slct" id="slct">
+						    <select name="productCategory" id="slct">
 						      <option>선택</option>
 						      <option value="01">아이폰</option>
 						      <option value="02">삼성</option>
@@ -110,13 +110,13 @@ $(function(){
 				  <td>상품가격</td>
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
-						<input type="text"/>
+						<input type="text" name="productPrice"/>
 					  </div>
 				  </td>
 				  <td>할인율</td>
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
-						<input type="text" value="0"/>
+						<input type="text" name="productDc" value="1"/>
 					  </div>
 				  </td>
 			  </tr>		
@@ -125,8 +125,8 @@ $(function(){
 				  <td colspan="3">
 				  	<div class="my-margin-left-10 text-align-left">
 					 <p class="btn-switch">					
-					  <input type="radio" checked id="yes" value="Y" name="switch" class="btn-switch__radio btn-switch__radio_yes" />
-					  <input type="radio" id="no" name="switch" value="N" class="btn-switch__radio btn-switch__radio_no" />		
+					  <input type="radio" checked id="yes" value="Y" name="useYn" class="btn-switch__radio btn-switch__radio_yes" />
+					  <input type="radio" id="no" name="useYn" value="N" class="btn-switch__radio btn-switch__radio_no" />		
 					  <label for="yes" class="btn-switch__label btn-switch__label_yes"><span class="btn-switch__txt">Yes</span></label>
 					  <label for="no" class="btn-switch__label btn-switch__label_no"><span class="btn-switch__txt">No</span></label>							
 					 </p>
@@ -137,7 +137,7 @@ $(function(){
 				  <td>상품내용</td>
 				  <td colspan="3">
 			    	  <div class="my-padding-10 my-width-90">
-			    	  	  <textarea style="height: 400px;" id="editor" name="editor" ></textarea>
+			    	  	  <textarea style="height: 400px;" id="editor" name="productContent" ></textarea>
 			    	  </div>
 				  </td>
 			  </tr>
@@ -145,7 +145,7 @@ $(function(){
 			
 			<br></br>
 			<div>
-			<button class="btnnew noty" >확인</button>
+			<button id="savebutton" class="btnnew noty">확인</button>
 			<a class="btnnew noty" onclick="javascript:history.back();">취소</a>
 			</div>
 		</form>
@@ -155,6 +155,6 @@ $(function(){
 		<div>
 			
 		</div>
-</div>	
+</div>
 </body>
 </html>
