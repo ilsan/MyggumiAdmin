@@ -12,4 +12,7 @@ public interface TestService {
 
 	 List<User> getUserList();
 	 int productInsert(Product vo);
+	 List<Product> productList();
+	 Product productDetail(int productNo);
+	 int productUpdate(Product vo);
 }

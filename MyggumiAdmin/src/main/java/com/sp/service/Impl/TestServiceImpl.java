@@ -27,5 +27,24 @@ public class TestServiceImpl implements TestService{
 
 		return testMapper.productInsert(vo);
 	}
+
+	@Override
+	public List<Product> productList() {
+		
+		return testMapper.productList();
+	}
+
+	@Override
+	public Product productDetail(int productNo) {
+		
+		return testMapper.productDetail(productNo);
+	}
+
+	@Override
+	public int productUpdate(Product vo) {
+
+		return testMapper.productUpdate(vo);
+	}
+	
     
 }

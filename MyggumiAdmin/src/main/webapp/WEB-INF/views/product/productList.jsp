@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,117 +38,28 @@ function productWrite() {
 			    <th>사용여부</th>
 			    <th>등록일</th>
 			  </tr>
-			  <tr>
-			    <td>1</td>
-			    <td>iphone</td>
-			    <td>NEW</td>
-			    <td>아이폰</td>
-			    <td>750,000</td>
-			    <td>Y</td>
-			    <td>2018-01-25</td>
-			  </tr>
-			  <tr>
-			    <td>2</td>
-			    <td>삼성탭</td>
-			    <td>NEW</td>
-			    <td>테블릿</td>
-			    <td>450,000</td>
-			    <td>Y</td>
-			    <td>2018-01-26</td>
-			  </tr>
-			   <tr>
-			    <td>3</td>
-			    <td>MSI</td>
-			    <td>HIT</td>
-			    <td>노트북</td>
-			    <td>1,150,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>4</td>
-			    <td>LG그램</td>
-			    <td>DC</td>
-			    <td>노트북</td>
-			    <td>950,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>5</td>
-			    <td>MAC-BOOK</td>
-			    <td>HIT</td>
-			    <td>노트북</td>
-			    <td>2,000,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>6</td>
-			    <td>MAC-BOOK6</td>
-			    <td>HIT</td>
-			    <td>노트북</td>
-			    <td>1,800,000</td>
-			    <td>N</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>7</td>
-			    <td>MAC-BOOK7</td>
-			    <td>DC</td>
-			    <td>노트북</td>
-			    <td>2,200,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>8</td>
-			    <td>MAC-BOOK8</td>
-			    <td>HIT</td>
-			    <td>노트북</td>
-			    <td>2,300,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>9</td>
-			    <td>MAC-BOOK9</td>
-			    <td>NEW</td>
-			    <td>노트북</td>
-			    <td>2,000,000</td>
-			    <td>N</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>10</td>
-			    <td>MAC-BOOK10</td>
-			    <td>HIT</td>
-			    <td>노트북</td>
-			    <td>2,000,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>11</td>
-			    <td>MAC-BOOK11</td>
-			    <td>HIT</td>
-			    <td>노트북</td>
-			    <td>1,800,000</td>
-			    <td>N</td>
-			    <td>2018-01-27</td>
-			  </tr>
-			  <tr>
-			    <td>12</td>
-			    <td>MAC-BOOK12</td>
-			    <td>NEW</td>
-			    <td>노트북</td>
-			    <td>1,300,000</td>
-			    <td>Y</td>
-			    <td>2018-01-27</td>
-			  </tr>
+			  <c:choose>
+			  	<c:when test="${empty productList}">
+			  		<tr>
+			  			<td colspan="7">--------상품이없습니다--------</td>
+			  		</tr>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<c:forEach items="${productList }" var="productList">
+			  			<tr>
+			  				<td>${productList.productNo }</td>
+			  				<td><a href="/admin/product/productDetail?productNo=${productList.productNo }">${productList.productName }</a></td>
+			  				<td>${productList.productType }</td>
+			  				<td>${productList.productCategory }</td>
+			  				<td>${productList.productPrice }</td>
+			  				<td>${productList.useYn }</td>
+			  				<td>${productList.regDate }</td> 
+			  			</tr>
+			  		</c:forEach>
+			  	</c:otherwise>
+			  </c:choose>
 			</table>
 		</div>
-		 
 		 
 		 
 		<br/>

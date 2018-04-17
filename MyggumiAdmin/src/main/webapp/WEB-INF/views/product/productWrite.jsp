@@ -59,10 +59,9 @@ $(function(){
 <body class="body-font-color">
  <div class="container body-min-height">
 	<h3>상품 등록</h3>
-		margin:0 auto;
 	<div style="width: 100%;">
 		<form action="/admin/product/productWriteAfter">
-		<input type="hidden" name="REG_USER" value="test"/>
+		<input type="hidden" name="regUser" value="test"/>
 			<table width="100%" class="my-tbl" style="border: 1px black solid;">
 			  <col width="10%">
 			  <col width="40%">
