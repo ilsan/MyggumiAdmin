@@ -22,34 +22,6 @@ public interface TestMapper {
 	@Select("SELECT * FROM SYS_USR")
     List<User> getUserList();
 	
-//	@Insert("INSERT INTO PRODUCT "
-//			+ "(PRODUCT_NO,"
-//			+ " PRODUCT_NAME,"
-//			+ " PRODUCT_CONTENT,"
-//			+ " PRODUCT_TYPE,"
-//			+ " PRODUCT_DC,"
-//			+ " PRODUCT_PRICE,"
-//			+ " PRODUCT_CATEGORY,"
-//			+ " REG_USER,"
-//			+ " REG_DATE,"
-//			+ " UPD_USER,"
-//			+ " UPD_DATE, "
-//			+ " USE_YN)"
-//			+ " VALUES"
-//			+ "(PRODUCT_PRODUCT_NO.NEXTVAL, "
-//			+ " #{vo.productName}, "
-//			+ " #{vo.productContent}, "
-//			+ " #{vo.productType},"
-//			+ " #{vo.productDc},"
-//			+ " #{vo.productPrice}, "
-//			+ " #{vo.productCategory},"
-//			+ " #{vo.regUser}, "
-//			+ " SYSDATE,"
-//			+ " null"
-//			+ " ,SYSDATE"
-//			+ " ,#{vo.useYn})")
-//	int productInsert(@Param("vo") Product vo);
-	
 	@InsertProvider(type = productProvider.class , method = "productInsert")
 	int productInsert(@Param("vo") Product vo);
 	
@@ -94,44 +66,14 @@ public interface TestMapper {
 			return query.toString();
 		}
 		
-	}
-	
-	@Select( "SELECT PRODUCT_NO "
-			+ "		,PRODUCT_NAME "
-			+ "		,PRODUCT_CONTENT "
-			+ "		,PRODUCT_TYPE "
-			+ "		,PRODUCT_DC "
-			+ "		,PRODUCT_PRICE "
-			+ "		,PRODUCT_CATEGORY "
-			+ "		,REG_USER "
-			+ "		,REG_DATE "
-			+ "		,UPD_USER "
-			+ "		,UPD_DATE "
-			+ "		,USE_YN "
-			+ "	FROM PRODUCT "
-			+ " ORDER BY PRODUCT_NO DESC " )
-	List<Product> productList();
-
-	@Select( "SELECT PRODUCT_NO "
-			+ "		,PRODUCT_NAME "
-			+ "		,PRODUCT_CONTENT "
-			+ "		,PRODUCT_TYPE "
-			+ "		,PRODUCT_DC "
-			+ "		,PRODUCT_PRICE "
-			+ "		,PRODUCT_CATEGORY "
-			+ "		,REG_USER "
-			+ "		,REG_DATE "
-			+ "		,UPD_USER "
-			+ "		,UPD_DATE "
-			+ "		,USE_YN "
-			+ "	FROM PRODUCT "
-			+ " WHERE PRODUCT_NO = #{productNo}" )
-	Product productDetail(int productNo);
-	
-	@UpdateProvider(type = updateProvider.class, method="productUpdate")
-	int productUpdate(@Param("vo") Product vo);
-	
-	class updateProvider{
+		public String productDetail(@Param("productNo") int productNo) {
+			return new SQL() {{
+					SELECT("*");
+					FROM("PRODUCT");
+					WHERE("PRODUCT_NO = #{productNo}");
+				}}.toString();
+		}
+		
 		public String productUpdate(@Param("vo") Product vo) {
 			
 			StringBuilder query = new StringBuilder();
@@ -150,5 +92,45 @@ public interface TestMapper {
 		}
 	}
 	
+	@Select( "SELECT PRODUCT_NO "
+			+ "		,PRODUCT_NAME "
+			+ "		,PRODUCT_CONTENT "
+			+ "		,PRODUCT_TYPE "
+			+ "		,PRODUCT_DC "
+			+ "		,PRODUCT_PRICE "
+			+ "		,PRODUCT_CATEGORY "
+			+ "		,REG_USER "
+			+ "		,REG_DATE "
+			+ "		,UPD_USER "
+			+ "		,UPD_DATE "
+			+ "		,USE_YN "
+			+ "	FROM PRODUCT "
+			+ " ORDER BY PRODUCT_NO DESC " )
+	List<Product> productList();
+	
+	@SelectProvider(type=productProvider.class, method="productDetail")
+	Product productDetail(@Param("productNo") int productNo);
+	
+
+//	@Select( "SELECT PRODUCT_NO "
+//			+ "		,PRODUCT_NAME "
+//			+ "		,PRODUCT_CONTENT "
+//			+ "		,PRODUCT_TYPE "
+//			+ "		,PRODUCT_DC "
+//			+ "		,PRODUCT_PRICE "
+//			+ "		,PRODUCT_CATEGORY "
+//			+ "		,REG_USER "
+//			+ "		,REG_DATE "
+//			+ "		,UPD_USER "
+//			+ "		,UPD_DATE "
+//			+ "		,USE_YN "
+//			+ "	FROM PRODUCT "
+//			+ " WHERE PRODUCT_NO = #{productNo}" )
+//	Product productDetail(int productNo);
+	
+	@UpdateProvider(type = productProvider.class, method="productUpdate")
+	int productUpdate(@Param("vo") Product vo);
+
+
 }
 

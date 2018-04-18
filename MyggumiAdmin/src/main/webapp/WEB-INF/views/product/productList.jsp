@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,7 +53,7 @@ function productWrite() {
 			  				<td><a href="/admin/product/productDetail?productNo=${productList.productNo }">${productList.productName }</a></td>
 			  				<td>${productList.productType }</td>
 			  				<td>${productList.productCategory }</td>
-			  				<td>${productList.productPrice }</td>
+			  				<td><fmt:formatNumber value="${productList.productPrice }" pattern="#,###"/></td>
 			  				<td>${productList.useYn }</td>
 			  				<td>${productList.regDate }</td> 
 			  			</tr>
@@ -59,17 +61,13 @@ function productWrite() {
 			  	</c:otherwise>
 			  </c:choose>
 			</table>
-		</div>
-		 
-		 
+		</div>	 
 		<br/>
 		<div>
 			<button class="btnnew noty" onclick="location.href='/admin/product/productWrite';">등록하기</button>
 			<button class="btnnew noty" ><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 일괄 등록</button>
 			                  ------------------------- 페이징 처리 필요 ------------------------------
-		</div>
-		
-		
+		</div>	
 </div>	
 </body>
 </html>

@@ -125,6 +125,7 @@ $(function(){
 				  </td>
 			  </tr>		
 			  <tr>
+			  
 				  <td>사용여부</td>
 				  <td colspan="3">
 				  	<div class="my-margin-left-10 text-align-left">
