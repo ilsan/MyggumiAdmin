@@ -26,7 +26,7 @@
               <i class="icon-lock icon-white"></i> Login</a>
               </li>
               <li>
-              <a href="/admin/test/test">
+              <a href="">
               <i class="icon-user icon-white"></i>뽑기</a>
               </li>
             </ul>
