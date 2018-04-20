@@ -1,9 +1,15 @@
 package com.sp.domain;
 
-import java.sql.Date;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+
+/**
+ * @author ShipJH
+ * 상품 VO
+ */
+
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class Product extends Common{
 

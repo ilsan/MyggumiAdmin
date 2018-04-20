@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * @author ShipJH
- *
+ * 공통적으로 들어갈 VO 변수
  */
 
 @Data
