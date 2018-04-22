@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sp.domain.CommonCodeInfo;
 import com.sp.domain.Product;
+import com.sp.service.Impl.CommonCodeServiceImpl;
 import com.sp.service.Impl.TestServiceImpl;
 
 /**
@@ -24,6 +26,8 @@ public class ProductController {
 	@Autowired(required=true)
 	private TestServiceImpl testServiceImpl;
 	
+	@Autowired
+	private CommonCodeServiceImpl commonCodeServiceImpl;
 
 	/**
 	 * 20180421 배
@@ -67,6 +71,7 @@ public class ProductController {
 	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
 		 
 		System.out.println(">>>>>>>>>>> 접속 productWrite ");
+		commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode());
 		modelAndView.setViewName("product/productWrite");
 	    return modelAndView;
 	  }
