@@ -2,7 +2,6 @@ package com.sp.contorller;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,28 +11,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.domain.Product;
-import com.sp.domain.User;
 import com.sp.service.Impl.TestServiceImpl;
 
+/**
+ * 
+ * @author ShipJH
+ * 상품 컨트롤러 
+ */
 @Controller
 public class ProductController {
 
 	@Autowired(required=true)
 	private TestServiceImpl testServiceImpl;
 	
-//	 @RequestMapping("/admin/product/productList")
-//	  public ModelAndView productList(ModelAndView modelAndView) {
-//		 
-//		System.out.println(">>>>>>>>>>> 접속 product/productList ");
-//		
-//		List<User> d = testServiceImpl.getUserList();
-//		
-//		System.out.println(d.size());
-//		
-//		modelAndView.addObject("userList", d);
-//		modelAndView.setViewName("product/productList");
-//	    return modelAndView;
-//	  }
+
+	/**
+	 * 20180421 배
+	 * @param modelAndView
+	 * @return 
+	 * 상품 리스트 조회
+	 */
 	 @RequestMapping("/admin/product/productList")
 	  public ModelAndView productList(ModelAndView modelAndView) {
 		 
@@ -47,6 +44,14 @@ public class ProductController {
 		modelAndView.setViewName("product/productList");
 	    return modelAndView;
 	  }
+	 
+	 /**
+	  * 
+	  * @param modelAndView
+	  * @param productNo - 상품번호
+	  * @return
+	  * 
+	  */
 	 @RequestMapping("/admin/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 

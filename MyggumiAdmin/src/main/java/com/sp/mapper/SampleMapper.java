@@ -1,9 +1,10 @@
 package com.sp.mapper;
 
-import com.sp.domain.User;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.sp.domain.User;
 
 @Repository
 public interface SampleMapper {

@@ -12,6 +12,5 @@ import lombok.Data;
 @Data
 public class ProductForm {
 
-	//ex
 	private String seq;
 }
