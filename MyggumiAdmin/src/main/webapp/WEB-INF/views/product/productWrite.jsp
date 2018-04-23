@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -82,9 +83,9 @@ $(function(){
 						 <div class="select">
 						    <select name="productType" id="slct">
 						      <option>선택</option>
-						      <option value="NEW">NEW</option>
-						      <option value="HIT">HIT</option>
-						      <option value="DC">DC</option>
+						      <c:forEach items="${productType}" var="typeList">
+						      	<option value="${typeList.comCd}">${typeList.comNm}</option>
+						      </c:forEach>
 						    </select>
 						  </div>
 					  </div>
@@ -95,11 +96,9 @@ $(function(){
 						 <div class="select">
 						    <select name="productCategory" id="slct">
 						      <option>선택</option>
-						      <option value="01">아이폰</option>
-						      <option value="02">삼성</option>
-						      <option value="03">태블릿</option>
-						      <option value="04">노트북</option>
-						      <option value="05">기타</option>
+						      <c:forEach items="${productCategory}" var="categoryList">
+						      	<option value="${categoryList.comCd}">${categoryList.comNm}</option>
+						      </c:forEach>
 						    </select>
 						  </div>
 					  </div>

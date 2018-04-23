@@ -20,7 +20,8 @@ public interface CommonCodeMapper {
 
 	@Select("  SELECT * "
 			+ "  FROM COMMON_CD "
-			+ " WHERE COM_CD_REF = #{code}")
+			+ " WHERE COM_CD_REF = #{code}"
+			+ " ORDER BY DISPLAY_NO ASC ")
 	List<CommonCode> findByCode(String code);
 
 }

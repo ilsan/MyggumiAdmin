@@ -26,7 +26,7 @@ public class ProductController {
 	@Autowired(required=true)
 	private TestServiceImpl testServiceImpl;
 	
-	@Autowired
+	@Autowired(required=true)
 	private CommonCodeServiceImpl commonCodeServiceImpl;
 
 	/**
@@ -71,7 +71,10 @@ public class ProductController {
 	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
 		 
 		System.out.println(">>>>>>>>>>> 접속 productWrite ");
-		commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode());
+		
+		
+		modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+		modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		modelAndView.setViewName("product/productWrite");
 	    return modelAndView;
 	  }
