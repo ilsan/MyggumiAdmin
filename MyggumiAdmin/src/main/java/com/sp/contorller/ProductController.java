@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sp.domain.CommonCodeInfo;
 import com.sp.domain.Product;
 import com.sp.service.Impl.CommonCodeServiceImpl;
-import com.sp.service.Impl.TestServiceImpl;
+import com.sp.service.Impl.ProductServiceImpl;
 
 /**
  * 
@@ -24,7 +24,7 @@ import com.sp.service.Impl.TestServiceImpl;
 public class ProductController {
 
 	@Autowired(required=true)
-	private TestServiceImpl testServiceImpl;
+	private ProductServiceImpl productServiceImpl;
 	
 	@Autowired(required=true)
 	private CommonCodeServiceImpl commonCodeServiceImpl;
@@ -37,13 +37,7 @@ public class ProductController {
 	 */
 	 @RequestMapping("/admin/product/productList")
 	  public ModelAndView productList(ModelAndView modelAndView) {
-		 
-		System.out.println(">>>>>>>>>>> 접속 product/productList ");
-		
-		List<Product> productList = testServiceImpl.productList();
-		
-		System.out.println(productList.size());
-		
+		List<Product> productList = productServiceImpl.productList();
 		modelAndView.addObject("productList", productList);
 		modelAndView.setViewName("product/productList");
 	    return modelAndView;
@@ -58,21 +52,23 @@ public class ProductController {
 	  */
 	 @RequestMapping("/admin/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
-		 
-		 System.out.println(">>>>>>>>>>> 접속 product/productDetail ");
-		 
-		 Product productDetail = testServiceImpl.productDetail(productNo);
+		 Product productDetail = productServiceImpl.productDetail(productNo);
 		 
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productDetail");
 		 return modelAndView;
 	 }
+	 
+	 
+	 /**
+	  * 
+	  * @param modelAndView
+	  * @param productNo - 상품번호
+	  * @return 
+	  * 
+	  */
 	 @RequestMapping("/admin/product/productWrite")
 	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
-		 
-		System.out.println(">>>>>>>>>>> 접속 productWrite ");
-		
-		
 		modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
 		modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		modelAndView.setViewName("product/productWrite");
@@ -80,18 +76,12 @@ public class ProductController {
 	  }
 	 @RequestMapping("/admin/product/productWriteAfter")
 	 public String productWriteAfter(@ModelAttribute Product vo) {
-		 testServiceImpl.productInsert(vo);
-		 System.out.println(">>>>>>>>>>> 상품등록 productInsert");
-		 
+		 productServiceImpl.productInsert(vo);
 		 return "redirect:/admin/product/productList";
 	 }
 	 @RequestMapping("/admin/product/productUpdate")
 	 public ModelAndView productUpdate(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
-		 
-		 System.out.println(">>>>>>>>>>> 접속 productUpdate");
-		 
-		 Product productDetail = testServiceImpl.productDetail(productNo);
-
+		 Product productDetail = productServiceImpl.productDetail(productNo);
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productUpdate");
 		 return modelAndView;
@@ -99,7 +89,7 @@ public class ProductController {
 	 @RequestMapping("/admin/product/productUpdateAfter")
 	 public String productUpdateAfter(@ModelAttribute Product vo, @RequestParam("updatePno") int productNo) {
 		 vo.setProductNo(productNo);
-		 int res = testServiceImpl.productUpdate(vo);
+		 int res = productServiceImpl.productUpdate(vo);
 		 if(res>0) {
 			 System.out.println(">>>>>>>>>>> 상품수정 productUpdateAfter"); 
 		 }else {
@@ -109,8 +99,6 @@ public class ProductController {
 	 }
 	 @RequestMapping("/admin/member/memberList")
 	  public ModelAndView memberList(Model model, ModelAndView modelAndView) {
-		 
-		System.out.println(">>>>>>>>>>> 접속 memberList ");
 		modelAndView.setViewName("member/memberList");
 	    return modelAndView;
 	  }

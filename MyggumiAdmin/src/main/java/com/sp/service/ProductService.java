@@ -8,7 +8,7 @@ import com.sp.domain.Product;
 import com.sp.domain.User;
 
 @Mapper
-public interface TestService {
+public interface ProductService {
 
 	 List<User> getUserList();
 	 int productInsert(Product vo);

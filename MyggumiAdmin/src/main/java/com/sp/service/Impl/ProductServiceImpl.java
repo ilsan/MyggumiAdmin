@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.sp.domain.Product;
 import com.sp.domain.User;
-import com.sp.mapper.TestMapper;
-import com.sp.service.TestService;
+import com.sp.mapper.ProductMapper;
+import com.sp.service.ProductService;
 
 @Service
-public class TestServiceImpl implements TestService{
+public class ProductServiceImpl implements ProductService{
 
 	@Autowired
-	private TestMapper testMapper;
+	private ProductMapper testMapper;
 	 
 	@Override
 	public List<User> getUserList() {

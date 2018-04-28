@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.List;
 
 @Mapper
-public interface TestMapper {
+public interface ProductMapper {
 	
 	@Select("SELECT * FROM SYS_USR")
     List<User> getUserList();
