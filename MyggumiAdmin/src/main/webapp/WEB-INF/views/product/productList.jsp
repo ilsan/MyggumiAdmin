@@ -15,6 +15,10 @@ function productWrite() {
 
 
 </script>
+<style type="text/css">
+@media (max-width:360px){th{font-size:3px;}}
+@media (max-width:360px){td{font-size:3px;}}
+</style>
 <title>상품 리스트</title>
 </head>
 <body class="body-font-color">
