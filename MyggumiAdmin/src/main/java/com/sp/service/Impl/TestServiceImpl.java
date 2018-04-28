@@ -1,6 +1,7 @@
 package com.sp.service.Impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,10 @@ public class TestServiceImpl implements TestService{
 	}
 
 	@Override
-	public List<Product> productList() {
+	public Map<String, Object> productList(String currentPage) {
 		
-		return testMapper.productList();
+		//testMapper.productList(map)
+		return null;
 	}
 
 	@Override

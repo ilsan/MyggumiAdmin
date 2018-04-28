@@ -1,9 +1,8 @@
 package com.sp.mapper;
 
-import com.sp.domain.Product;
-import com.sp.domain.User;
+import java.util.List;
+import java.util.Map;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,10 +10,9 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.jdbc.SQL;
-import org.junit.experimental.theories.FromDataPoints;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.util.List;
+import com.sp.domain.Product;
+import com.sp.domain.User;
 
 @Mapper
 public interface TestMapper {
@@ -90,23 +88,29 @@ public interface TestMapper {
 			
 			return query.toString();
 		}
+		
 	}
 	
-	@Select( "SELECT PRODUCT_NO "
-			+ "		,PRODUCT_NAME "
-			+ "		,PRODUCT_CONTENT "
-			+ "		,PRODUCT_TYPE "
-			+ "		,PRODUCT_DC "
-			+ "		,PRODUCT_PRICE "
-			+ "		,PRODUCT_CATEGORY "
-			+ "		,REG_USER "
-			+ "		,REG_DATE "
-			+ "		,UPD_USER "
-			+ "		,UPD_DATE "
-			+ "		,USE_YN "
-			+ "	FROM PRODUCT "
-			+ " ORDER BY PRODUCT_NO DESC " )
-	List<Product> productList();
+	@Select( "SELECT\n" + 
+			"    AAA.*\n" + 
+			"FROM(\n" + 
+			"    SELECT\n" + 
+			"        COUNT(*) OVER() AS TOTAL_COUNT,\n" + 
+			"        AA.*\n" + 
+			"    FROM(\n" + 
+			"        SELECT\n" + 
+			"            ROW_NUMBER() OVER (ORDER BY productNo DESC) RNUM,\n" + 
+			"            productNo,\n" + 
+			"            productName,\n" + 
+			"            productDc,\n" + 
+			"            productPrice \n" + 
+			"        FROM PRODUCT\n" + 
+			"     \n" + 
+			"    ) AA\n" + 
+			") AAA\n" + 
+			"WHERE\n" + 
+			"    AAA.RNUM BETWEEN #{startPage} AND #{endPage}\n")
+	List<Product> productList(Map map);
 	
 	@SelectProvider(type=productProvider.class, method="productDetail")
 	Product productDetail(@Param("productNo") int productNo);
