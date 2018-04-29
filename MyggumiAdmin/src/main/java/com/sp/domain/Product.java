@@ -21,5 +21,6 @@ public class Product extends Common{
 	private int productPrice;
 	private int productCategory;
 	private String useYn;
-	
+	private String typeNm;
+	private String categoryNm;
 }

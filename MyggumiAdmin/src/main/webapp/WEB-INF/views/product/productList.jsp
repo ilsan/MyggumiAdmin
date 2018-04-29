@@ -55,8 +55,8 @@ function productWrite() {
 			  			<tr>
 			  				<td>${productList.productNo }</td>
 			  				<td><a href="/admin/product/productDetail?productNo=${productList.productNo }">${productList.productName }</a></td>
-			  				<td>${productList.productType }</td>
-			  				<td>${productList.productCategory }</td>
+			  				<td>${productList.typeNm }</td>
+			  				<td>${productList.categoryNm }</td>
 			  				<td><fmt:formatNumber value="${productList.productPrice }" pattern="#,###"/></td>
 			  				<td>${productList.useYn }</td>
 			  				<td>${productList.regDate }</td> 

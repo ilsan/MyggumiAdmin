@@ -82,6 +82,8 @@ public class ProductController {
 	 @RequestMapping("/admin/product/productUpdate")
 	 public ModelAndView productUpdate(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 Product productDetail = productServiceImpl.productDetail(productNo);
+		 modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+		 modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productUpdate");
 		 return modelAndView;

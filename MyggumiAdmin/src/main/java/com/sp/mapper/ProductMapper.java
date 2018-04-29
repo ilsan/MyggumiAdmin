@@ -26,23 +26,9 @@ public interface ProductMapper {
 	@InsertProvider(type = ProductProvider.class , method = "productInsert")
 	int productInsert(@Param("vo") Product vo);
 	
-	
-	@Select( "SELECT PRODUCT_NO "
-			+ "		,PRODUCT_NAME "
-			+ "		,PRODUCT_CONTENT "
-			+ "		,PRODUCT_TYPE "
-			+ "		,PRODUCT_DC "
-			+ "		,PRODUCT_PRICE "
-			+ "		,PRODUCT_CATEGORY "
-			+ "		,REG_USER "
-			+ "		,REG_DATE "
-			+ "		,UPD_USER "
-			+ "		,UPD_DATE "
-			+ "		,USE_YN "
-			+ "	FROM PRODUCT "
-			+ " ORDER BY PRODUCT_NO DESC " )
+	@SelectProvider(type=ProductProvider.class, method="productList")
 	List<Product> productList();
-	
+
 	@SelectProvider(type=ProductProvider.class, method="productDetail")
 	Product productDetail(@Param("productNo") int productNo);
 	

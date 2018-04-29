@@ -15,13 +15,13 @@
         </div>
         <%--
          ${requestScope['javax.servlet.forward.servlet_path']}; el로 해당 url 가져올때
-         <%=request.getAttribute("javax.servlet.forward.request_uri").equals("/admin/product/productList")%> java코드로 해당url 가져올때
+         <%=request.getAttribute("javax.servlet.forward.request_uri").equals("/admin/product/productList")%> java코드로 해당url 가져올때 
         --%>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
             <c:if test='<%=request.getAttribute("javax.servlet.forward.request_uri").equals("/admin/product/productList")%>'> 
  				 <c:set value="active" var="cssClass1"></c:set>
-			</c:if> 
+			</c:if>
               <li class="${cssClass1}"><a href="/admin/product/productList">
               <i class="icon-home icon-white"></i>상품 등록</a>
               </li>
