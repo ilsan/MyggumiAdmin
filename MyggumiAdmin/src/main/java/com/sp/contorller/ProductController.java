@@ -39,14 +39,22 @@ public class ProductController {
 	 * @return 
 	 * 상품 리스트 조회
 	 */
-	
+
 	 @RequestMapping("/admin/product/productList")
-	  public ModelAndView LoginYNproductList(ModelAndView modelAndView) {
+	  public ModelAndView productList(ModelAndView modelAndView) {
 		List<Product> productList = productServiceImpl.productList();
 		modelAndView.addObject("productList", productList);
 		modelAndView.setViewName("product/productList");
 	    return modelAndView;
 	  }
+	 
+//	 @RequestMapping("/admin/product/productList")
+//	  public ModelAndView LoginYNproductList(ModelAndView modelAndView) {
+//		List<Product> productList = productServiceImpl.productList();
+//		modelAndView.addObject("productList", productList);
+//		modelAndView.setViewName("product/productList");
+//	    return modelAndView;
+//	  }
 	 
 	 /**
 	  * 

@@ -24,9 +24,9 @@ public class ProductProvider {
 			query.append(",A.USE_YN");
 			query.append(",B.COM_NM AS TYPE_NM");
 			query.append(",C.COM_NM AS CATEGORY_NM");
-			query.append(" FROM PRODUCT A, COMMON_CD B, COMMON_CD C ");
-			query.append(" WHERE A.PRODUCT_TYPE=B.COM_CD");
-			query.append(" AND A.PRODUCT_CATEGORY=C.COM_CD");
+			query.append(" FROM PRODUCT A");
+			query.append(" INNER JOIN COMMON_CD B ON A.PRODUCT_TYPE=B.COM_CD");
+			query.append(" INNER JOIN COMMON_CD C ON A.PRODUCT_CATEGORY=C.COM_CD");
 			query.append(" ORDER BY A.PRODUCT_NO DESC");
 			
 		return query.toString();
@@ -95,10 +95,10 @@ public class ProductProvider {
 		query.append(",A.USE_YN");
 		query.append(",B.COM_NM AS TYPE_NM");
 		query.append(",C.COM_NM AS CATEGORY_NM");
-		query.append(" FROM PRODUCT A, COMMON_CD B, COMMON_CD C ");
-		query.append(" WHERE A.PRODUCT_TYPE=B.COM_CD");
-		query.append(" AND A.PRODUCT_CATEGORY=C.COM_CD");
-		query.append(" AND A.PRODUCT_NO = #{productNo}");
+		query.append(" FROM PRODUCT A ");
+		query.append(" INNER JOIN COMMON_CD B ON A.PRODUCT_TYPE=B.COM_CD");
+		query.append(" INNER JOIN COMMON_CD C ON A.PRODUCT_CATEGORY=C.COM_CD");
+		query.append(" WHERE A.PRODUCT_NO = #{productNo}");
 		
 		return query.toString();
 	}
