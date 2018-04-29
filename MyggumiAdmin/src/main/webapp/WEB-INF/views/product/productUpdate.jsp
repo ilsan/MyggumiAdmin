@@ -86,10 +86,10 @@ $(function(){
 						 
 						    <select name="productType" id="slct" class="productType">
 						      <option>선택</option>
-						      <c:forEach items="${productType}" var="typeList">
-						      	<option value="${typeList.comCd}" <c:if test="${typeList.comCd eq productDetail.productType}">selected</c:if>>${typeList.comNm}</option>
-						      </c:forEach>
-						      						      
+<%-- 						      <c:forEach items="${productType}" var="typeList"> --%>
+<%-- 						      	<option value="${typeList.comCd}" <c:if test="${typeList.comCd eq productDetail.productType}">selected</c:if>>${typeList.comNm}</option> --%>
+<%-- 						      </c:forEach> --%>
+						      
 						     <%--  <option value="NEW" <c:if test="${productDetail.productType == 'NEW'}">selected</c:if>>NEW</option>
 						      <option value="HIT" <c:if test="${productDetail.productType == 'HIT'}">selected</c:if>>HIT</option>
 						      <option value="DC" <c:if test="${productDetail.productType == 'DC'}">selected</c:if>>DC</option> --%>
@@ -104,9 +104,9 @@ $(function(){
 						 
 						    <select name="productCategory" id="slct" class="productCategory">
 						      <option>선택</option>
-						      <c:forEach items="${productCategory}" var="categoryList">
-						      	<option value="${categoryList.comCd}" <c:if test="${categoryList.comCd eq productDetail.productCategory}">selected</c:if>>${categoryList.comNm}</option>
-						      </c:forEach>
+<%-- 						      <c:forEach items="${productCategory}" var="categoryList"> --%>
+<%-- 						      	<option value="${categoryList.comCd}" <c:if test="${categoryList.comCd eq productDetail.productCategory}">selected</c:if>>${categoryList.comNm}</option> --%>
+<%-- 						      </c:forEach> --%>
 						      <%-- <option value="01" <c:if test="${productDetail.productCategory == 1}">selected</c:if>>아이폰</option>
 						      <option value="02" <c:if test="${productDetail.productCategory == 2}">selected</c:if>>삼성</option>
 						      <option value="03" <c:if test="${productDetail.productCategory == 3}">selected</c:if>>태블릿</option>

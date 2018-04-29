@@ -1,8 +1,6 @@
 package com.sp.mapper.provider;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.jdbc.SQL;
 
 import com.sp.domain.Product;
 
@@ -30,7 +28,7 @@ public class ProductProvider {
 			query.append(" WHERE A.PRODUCT_TYPE=B.COM_CD");
 			query.append(" AND A.PRODUCT_CATEGORY=C.COM_CD");
 			query.append(" ORDER BY A.PRODUCT_NO DESC");
-		
+			
 		return query.toString();
 	}
 	public String productInsert(@Param("vo") Product vo) {

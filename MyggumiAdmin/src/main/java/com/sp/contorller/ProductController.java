@@ -2,6 +2,7 @@ package com.sp.contorller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ import com.sp.domain.CommonCodeInfo;
 import com.sp.domain.Product;
 import com.sp.service.Impl.CommonCodeServiceImpl;
 import com.sp.service.Impl.ProductServiceImpl;
+
+import lombok.extern.slf4j.Slf4j;
+
 
 /**
  * 
@@ -35,8 +39,9 @@ public class ProductController {
 	 * @return 
 	 * 상품 리스트 조회
 	 */
+	
 	 @RequestMapping("/admin/product/productList")
-	  public ModelAndView productList(ModelAndView modelAndView) {
+	  public ModelAndView LoginYNproductList(ModelAndView modelAndView) {
 		List<Product> productList = productServiceImpl.productList();
 		modelAndView.addObject("productList", productList);
 		modelAndView.setViewName("product/productList");
@@ -53,7 +58,6 @@ public class ProductController {
 	 @RequestMapping("/admin/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 Product productDetail = productServiceImpl.productDetail(productNo);
-		 
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productDetail");
 		 return modelAndView;
