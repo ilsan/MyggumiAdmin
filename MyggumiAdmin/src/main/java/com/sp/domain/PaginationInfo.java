@@ -22,6 +22,15 @@ public class PaginationInfo {
 	private int pageSize;
 	private int totalRecordCount;
 	
+	public PaginationInfo() {
+		if(currentPageNo < 1) {
+			currentPageNo = 1;
+		}
+		
+		recordCountPerPage = 10;
+		pageSize = 10;
+	}
+	
 	public int getRecordCountPerPage() {
 		return recordCountPerPage;
 	}
@@ -97,7 +106,7 @@ public class PaginationInfo {
 	}
 
 	public int getFirstRecordIndex() {
-		firstRecordIndex = (getCurrentPageNo() - 1) * getRecordCountPerPage();
+		firstRecordIndex = (getCurrentPageNo() - 1) * getRecordCountPerPage() +1;
 		return firstRecordIndex;
 	}
 

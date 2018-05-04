@@ -49,7 +49,7 @@ function productWrite() {
 			  	<c:otherwise>
 			  		<c:forEach items="${productList }" var="productList">
 			  			<tr>
-			  				<td>${productList.productNo }</td>
+			  				<td>${productList.rnum }</td>
 			  				<td><a href="/admin/product/productDetail?productNo=${productList.productNo }">${productList.productName }</a></td>
 			  				<td>${productList.productType }</td>
 			  				<td>${productList.productCategory }</td>
@@ -66,7 +66,8 @@ function productWrite() {
 		<div>
 			<button class="btnnew noty" onclick="location.href='/admin/product/productWrite';">등록하기</button>
 			<button class="btnnew noty" ><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 일괄 등록</button>
-			                  ------------------------- 페이징 처리 필요 ------------------------------
+			                  ${pageResult}
+			<input type="hidden" id="currentPage" name="currentPage" >			                  
 		</div>	
 </div>	
 </body>

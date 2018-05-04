@@ -10,12 +10,16 @@ import org.springframework.util.StringUtils;
 
 import com.sp.domain.PaginationInfo;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 
  * @author	윤지수
  * @since 	2018.04.24
  * 
  */
+
+@Slf4j
 public class PageUtil {
 	
 	@Autowired
@@ -34,36 +38,52 @@ public class PageUtil {
 		return result;
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Map setPageInfo(Map paramMap, PaginationInfo page) throws Exception {		
-		if ((String)paramMap.get("pageIndex") == null || "".equals((String)paramMap.get("pageIndex"))){
-			paramMap.put("pageIndex", "1");
+	public PaginationInfo setPageInfo(PaginationInfo page, String pageUnit, String pageSize) {
+		
+		if(page == null) {
+			page = new PaginationInfo();
+			page.setCurrentPageNo(1);
+		}else if(page.getCurrentPageNo() == 0) {
+			page.setCurrentPageNo(1);
 		}
 		
-		page.setCurrentPageNo(Integer.parseInt((String)paramMap.get("pageIndex")));
-		
-		if (paramMap.get("pageUnit") != null){
-			if (!"".equals((String)paramMap.get("pageUnit"))){
-				pageUnit = Integer.valueOf((String)paramMap.get("pageUnit"));
+		if (pageUnit != null){
+			if (!pageUnit.equals("")){
+				this.pageUnit = Integer.parseInt(pageUnit);
 			}
+		}
+		
+		if (pageSize != null){
+			if (!pageSize.equals("")){
+				this.pageSize = Integer.parseInt(pageSize);
+			}
+		}
+		
+		page.setRecordCountPerPage(this.pageUnit);
+		page.setPageSize(this.pageSize);
+		
+		return page;
+	}
+	
+	public void setPageInfo(PaginationInfo page) {
+		
+		if(page == null) {
+			page = new PaginationInfo();
+			page.setCurrentPageNo(1);
+		}else if(page.getCurrentPageNo() == 0) {
+			page.setCurrentPageNo(1);
 		}
 		
 		page.setRecordCountPerPage(pageUnit);
 		page.setPageSize(pageSize);
-		
-		paramMap.put("firstIndex", setFirstPage(page));
-		paramMap.put("lastIndex", String.valueOf(page.getLastRecordIndex()));
-		paramMap.put("recordCountPerPage", String.valueOf(page.getRecordCountPerPage()));
-		
-		return paramMap;
 	}
 	
-	@SuppressWarnings("rawtypes")
+	/*@SuppressWarnings("rawtypes")
 	public Map getPageInfo(Map paramMap, PaginationInfo page) throws Exception {		
 		paramMap = setPageInfo(paramMap, page);
 		
 		return paramMap;
-	}
+	}*/
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setTotalCount(Map paramMap, PaginationInfo page) throws Exception {
@@ -212,5 +232,82 @@ public class PageUtil {
 	    returnMap.put("result", list);
 	    return returnMap;
 	}
+	
+	public static String getPageNavigation(PaginationInfo pageInfo, String url, String linkString) {
 
+        StringBuffer result = new StringBuffer();
+
+        int page = pageInfo.getCurrentPageNo();			// 현재 페이지 번호
+        int totalCount = pageInfo.getLastPageNo();			// 전체 페이지 수
+        int pagePerPageSize = pageInfo.getPageSize();	// 페이지바에 보여줄 페이지 수
+        int pageSize = (int) Math.ceil((double) page / pagePerPageSize);														// 현재 페이지 그룹 수
+        int totalPageSize = 0;												// 전체 페이지 그룹 수
+        		
+        if(pageSize > 0 && totalCount > 0) {
+            linkString = StringUtils.isEmpty(linkString) ? "?" : "?"+linkString+"&";
+            
+            int startPage = 1;
+
+            if(totalCount != 0) {
+                totalPageSize = (totalCount % pageSize > 0) ? 1 : 0;
+                totalPageSize = totalPageSize + totalCount / pageSize;
+                startPage = pageInfo.getFirstPageNoOnPageList();
+            }
+
+            int prevPage = (page - 1);
+    		int nextPage = (page + 1);
+
+    		if (page == totalCount) 	{
+    			nextPage = totalCount;
+    		}
+
+    		if (prevPage == 0){
+    			prevPage = 1;
+    		}
+
+            int endPage = pageInfo.getLastPageNoOnPageList();
+            
+            result.append("<nav style=\"text-align:center\"><ul class=\"pagination\" >\n");
+
+            //처음
+            if(1 < page) {
+                result.append("\n <li><a href=\"" + url + linkString + "pageNo=1\" alt=\"처음페이지\"><span aria-hidden=\"true\">&lt;&lt;</span></a></li>\n");
+            } else {
+                result.append("\n <li><a href=\"#\" onclick=\"return false;\" alt=\"처음페이지\"><span aria-hidden=\"true\">&lt;&lt;</span></a></li>\n");
+            }
+
+            //이전페이지 그룹
+            if(0 < prevPage) {
+                result.append("\n <li><a href=\"" + url + linkString + "pageNo=" + prevPage + "\" alt=\"이전\">&lt;</a></li>\n");
+            } else {
+                result.append("\n <li><a href=\"" + url + linkString + "pageNo=1\" alt=\"이전\">&lt;</a></li>\n");
+            }
+
+            for(int i=startPage; i <= endPage ; i++) {
+                if(i == page) { // 현재페이지
+                    result.append("\n <li class=\"active\"><a href=\"#\" >"+i+"<span class=\"sr-only\">(current)</span></a></li>\n");
+                } else {
+                    result.append("\n <li><a href=\""+url+linkString+"pageNo="+i+"\">"+i+"</a></li>\n");
+                }
+            }
+
+            //다음페이지 그룹
+            if(nextPage <= totalPageSize) {
+                result.append("\n <li><a href=\"" + url + linkString + "pageNo=" + nextPage + "\" alt=\"다음\">&gt;</a></li>\n");
+            } else {
+                result.append("\n <li><a href=\"" + url + linkString + "pageNo=" + endPage + "\" alt=\"다음\">&gt;</a></li>\n");
+            }
+
+            //마지막 페이지
+            if(page < totalPageSize) {
+                result.append("\n <li><a href=\"" + url + linkString + "pageNo=" + totalPageSize + "\" alt=\"마지막페이지\"><span aria-hidden=\"true\">&gt;&gt;</span></a></li>\n");
+            } else {
+                result.append("\n <li><a href=\"#\" onclick=\"return false;\" alt=\"마지막페이지\"><span aria-hidden=\"true\">&gt;&gt;</span></a></li>\n");
+            }
+            
+            result.append("</ul></nav>");
+        }
+
+        return result.toString();
+    }
 }

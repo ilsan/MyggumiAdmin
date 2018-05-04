@@ -1,13 +1,12 @@
 package com.sp.domain;
 
-import java.sql.Date;
-
 import lombok.Data;
 
 @Data
 public class Product extends Common{
 
 	private int productNo;
+	private int rnum;
 	private String productName;
 	private String productContent;
 	private String productType;

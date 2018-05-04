@@ -1,11 +1,11 @@
 package com.sp.service.Impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sp.domain.PaginationInfo;
 import com.sp.domain.Product;
 import com.sp.domain.User;
 import com.sp.mapper.TestMapper;
@@ -30,10 +30,10 @@ public class TestServiceImpl implements TestService{
 	}
 
 	@Override
-	public Map<String, Object> productList(String currentPage) {
+	public List<Product> productList(PaginationInfo pageInfo) {
 		
-		//testMapper.productList(map)
-		return null;
+		List<Product> productList =  testMapper.productList(pageInfo);
+		return productList;
 	}
 
 	@Override
@@ -46,6 +46,11 @@ public class TestServiceImpl implements TestService{
 	public int productUpdate(Product vo) {
 
 		return testMapper.productUpdate(vo);
+	}
+
+	@Override
+	public int productTotalCount() {
+		return testMapper.productTotalCount();
 	}
 	
     

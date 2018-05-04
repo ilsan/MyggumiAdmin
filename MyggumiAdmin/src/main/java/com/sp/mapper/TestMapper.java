@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.jdbc.SQL;
 
+import com.sp.domain.PaginationInfo;
 import com.sp.domain.Product;
 import com.sp.domain.User;
 
@@ -91,29 +92,37 @@ public interface TestMapper {
 		
 	}
 	
-	@Select( "SELECT\n" + 
-			"    AAA.*\n" + 
-			"FROM(\n" + 
-			"    SELECT\n" + 
-			"        COUNT(*) OVER() AS TOTAL_COUNT,\n" + 
-			"        AA.*\n" + 
-			"    FROM(\n" + 
-			"        SELECT\n" + 
-			"            ROW_NUMBER() OVER (ORDER BY productNo DESC) RNUM,\n" + 
-			"            productNo,\n" + 
-			"            productName,\n" + 
-			"            productDc,\n" + 
-			"            productPrice \n" + 
-			"        FROM PRODUCT\n" + 
-			"     \n" + 
-			"    ) AA\n" + 
-			") AAA\n" + 
-			"WHERE\n" + 
-			"    AAA.RNUM BETWEEN #{startPage} AND #{endPage}\n")
-	List<Product> productList(Map map);
+	@Select( "SELECT" + 
+			"    AAA.*" + 
+			"FROM(" + 
+			"    SELECT" + 
+			"        AA.*" + 
+			"    FROM(" + 
+			"        SELECT" + 
+			"            ROW_NUMBER() OVER (ORDER BY PRODUCT_NO DESC) RNUM," + 
+			"            PRODUCT_NO," + 
+			"            PRODUCT_NAME," + 
+			"            PRODUCT_DC," + 
+			"            PRODUCT_PRICE, " +
+			"            PRODUCT_TYPE, " + 
+			"            PRODUCT_CATEGORY, " + 
+			"			 REG_USER," + 
+			"			 REG_DATE," + 
+			"			 UPD_USER," + 
+			"			 UPD_DATE," + 
+			"			 USE_YN "				+	
+			"        FROM PRODUCT" + 
+			"    ) AA" + 
+			") AAA" + 
+			" WHERE" + 
+			" AAA.RNUM BETWEEN #{firstRecordIndex} AND #{lastRecordIndex}")
+	public List<Product> productList(PaginationInfo pageInfo);
+	
+	@Select( "SELECT COUNT(*) FROM PRODUCT")
+	public int productTotalCount();
 	
 	@SelectProvider(type=productProvider.class, method="productDetail")
-	Product productDetail(@Param("productNo") int productNo);
+	public Product productDetail(@Param("productNo") int productNo);
 	
 
 //	@Select( "SELECT PRODUCT_NO "
@@ -133,7 +142,7 @@ public interface TestMapper {
 //	Product productDetail(int productNo);
 	
 	@UpdateProvider(type = productProvider.class, method="productUpdate")
-	int productUpdate(@Param("vo") Product vo);
+	public int productUpdate(@Param("vo") Product vo);
 
 
 }

@@ -1,6 +1,6 @@
 package com.sp.contorller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,25 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sp.common.util.PageUtil;
 import com.sp.domain.PaginationInfo;
 import com.sp.domain.Product;
-import com.sp.service.Impl.TestServiceImpl;
+import com.sp.service.TestService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/admin")
 public class ProductController {
 
 	@Autowired(required=true)
-	private TestServiceImpl testServiceImpl;
+	private TestService testService;
 	
 //	 @RequestMapping("/admin/product/productList")
 //	  public ModelAndView productList(ModelAndView modelAndView) {
 //		 
-//		System.out.println(">>>>>>>>>>> 접속 product/productList ");
+//		log.info(">>>>>>>>>>> 접속 product/productList ");
 //		
 //		List<User> d = testServiceImpl.getUserList();
 //		
-//		System.out.println(d.size());
+//		log.info(d.size());
 //		
 //		modelAndView.addObject("userList", d);
 //		modelAndView.setViewName("product/productList");
@@ -36,14 +40,15 @@ public class ProductController {
 //	  }
 	
 	 @RequestMapping("/product/productList")
-	  public String productList(Model model, @RequestParam("currentPage") String currentPage) {
+	  public String productList(Model model, @ModelAttribute("paginationInfo") PaginationInfo pageInfo) {
 		 
-		System.out.println(">>>>>>>>>>> 접속 product/productList ");
+		log.info(">>>>>>>>>>> 접속 product/productList ");
 		
-		Map<String, Object> resultMap = testServiceImpl.productList(currentPage);
+		String url = "/admin/product/productList";
 		
-		model.addAttribute("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
-		model.addAttribute("list", resultMap.get("result"));
+		model.addAttribute("productList", testService.productList(pageInfo));
+		model.addAttribute("count", testService.productTotalCount());
+		model.addAttribute("pageResult", PageUtil.getPageNavigation(pageInfo, url, null));
 
 	    return "product/productList";
 	  }
@@ -51,9 +56,9 @@ public class ProductController {
 	 @RequestMapping("/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 
-		 System.out.println(">>>>>>>>>>> 접속 product/productDetail ");
+		 log.info(">>>>>>>>>>> 접속 product/productDetail ");
 		 
-		 Product productDetail = testServiceImpl.productDetail(productNo);
+		 Product productDetail = testService.productDetail(productNo);
 		 
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productDetail");
@@ -63,15 +68,15 @@ public class ProductController {
 	 @RequestMapping("/product/productWrite")
 	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
 		 
-		System.out.println(">>>>>>>>>>> 접속 productWrite ");
+		log.info(">>>>>>>>>>> 접속 productWrite ");
 		modelAndView.setViewName("product/productWrite");
 	    return modelAndView;
 	  }
 	 
 	 @RequestMapping("/product/productWriteAfter")
 	 public String productWriteAfter(@ModelAttribute Product vo) {
-		 testServiceImpl.productInsert(vo);
-		 System.out.println(">>>>>>>>>>> 상품등록 productInsert");
+		 testService.productInsert(vo);
+		 log.info(">>>>>>>>>>> 상품등록 productInsert");
 		 
 		 return "redirect:/admin/product/productList";
 	 }
@@ -79,9 +84,9 @@ public class ProductController {
 	 @RequestMapping("/product/productUpdate")
 	 public ModelAndView productUpdate(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 
-		 System.out.println(">>>>>>>>>>> 접속 productUpdate");
+		 log.info(">>>>>>>>>>> 접속 productUpdate");
 		 
-		 Product productDetail = testServiceImpl.productDetail(productNo);
+		 Product productDetail = testService.productDetail(productNo);
 
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productUpdate");
@@ -91,11 +96,11 @@ public class ProductController {
 	 @RequestMapping("/product/productUpdateAfter")
 	 public String productUpdateAfter(@ModelAttribute Product vo, @RequestParam("updatePno") int productNo) {
 		 vo.setProductNo(productNo);
-		 int res = testServiceImpl.productUpdate(vo);
+		 int res = testService.productUpdate(vo);
 		 if(res>0) {
-			 System.out.println(">>>>>>>>>>> 상품수정 productUpdateAfter"); 
+			 log.info(">>>>>>>>>>> 상품수정 productUpdateAfter"); 
 		 }else {
-			 System.out.println(">>>>>>>>>>> 상품실패 productUpdateAfter");
+			 log.info(">>>>>>>>>>> 상품실패 productUpdateAfter");
 		 }
 		 return "redirect:/admin/product/productDetail?productNo="+productNo;
 	 }
@@ -103,7 +108,7 @@ public class ProductController {
 	 @RequestMapping("/member/memberList")
 	 public ModelAndView memberList(Model model, ModelAndView modelAndView) {
 		 
-		System.out.println(">>>>>>>>>>> 접속 memberList ");
+		log.info(">>>>>>>>>>> 접속 memberList ");
 		modelAndView.setViewName("member/memberList");
 	    return modelAndView;
 	  }
