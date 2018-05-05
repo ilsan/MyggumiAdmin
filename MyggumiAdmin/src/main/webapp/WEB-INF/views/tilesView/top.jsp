@@ -19,13 +19,13 @@
         --%>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-            <c:if test='<%=request.getAttribute("javax.servlet.forward.request_uri").equals("/admin/product/productList")%>'> 
+            <c:if test='<%=request.getAttribute("javax.servlet.forward.request_uri").toString().contains("product")%>'> 
  				 <c:set value="active" var="cssClass1"></c:set>
 			</c:if>
               <li class="${cssClass1}"><a href="/admin/product/productList">
               <i class="icon-home icon-white"></i>상품 등록</a>
               </li>
-            <c:if test='<%=request.getAttribute("javax.servlet.forward.request_uri").equals("/admin/member/memberList")%>'> 
+            <c:if test='<%=request.getAttribute("javax.servlet.forward.request_uri").toString().contains("member")%>'> 
  				 <c:set value="active" var="cssClass2"></c:set>
 			</c:if>                         
               <li class="${cssClass2}">
