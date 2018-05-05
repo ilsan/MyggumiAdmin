@@ -52,20 +52,12 @@ public class ProductController {
 	    return modelAndView;
 	  }
 	 
-//	 @RequestMapping("/admin/product/productList")
-//	  public ModelAndView LoginYNproductList(ModelAndView modelAndView) {
-//		List<Product> productList = productServiceImpl.productList();
-//		modelAndView.addObject("productList", productList);
-//		modelAndView.setViewName("product/productList");
-//	    return modelAndView;
-//	  }
 	 
 	 /**
-	  * 
 	  * @param modelAndView
 	  * @param productNo - 상품번호
 	  * @return
-	  * 
+	  * 상품 상세내역
 	  */
 	 @RequestMapping("/admin/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
@@ -77,14 +69,12 @@ public class ProductController {
 	 
 	 
 	 /**
-	  * 
 	  * @param modelAndView
-	  * @param productNo - 상품번호
 	  * @return 
-	  * 
+	  * 상품 등록페이지 이동
 	  */
 	 @RequestMapping("/admin/product/productWrite")
-	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
+	  public ModelAndView productWrite(ModelAndView modelAndView) {
 		modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
 		modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		modelAndView.setViewName("product/productWrite");
@@ -92,20 +82,28 @@ public class ProductController {
 	  }
 	 
 	 
+	 
+	 /**
+	  * @param ProductForm - 등록하기 위한 입력 데이터
+	  * @return
+	  * 상품 등록
+	  */
 	 @RequestMapping(value="/admin/product/productWriteAfter", method=RequestMethod.POST)
-	 public String productWriteAfter(@ModelAttribute ProductForm vo) {
-		 
-		 System.out.println(">>" + vo.getProductName());
-		 
-		 productServiceImpl.productInsert(vo);
+	 public String productWriteAfter(@ModelAttribute ProductForm productForm) {
+		 productServiceImpl.productInsert(productForm);
 		 return "redirect:/admin/product/productList";
 	 }
 	 
 	 
 	 
-	 
+	 /**
+	  * @param ModelAndView
+	  * @param productNo - 상품번호
+	  * @return 
+	  * 상품 수정
+	  */ 
 	 @RequestMapping("/admin/product/productUpdate")
-	 public ModelAndView productUpdate(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
+	 public ModelAndView productUpdate(ModelAndView modelAndView, @RequestParam("productNo") int productNo) {
 		 Product productDetail = productServiceImpl.productDetail(productNo);
 		 modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
 		 modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
@@ -113,7 +111,9 @@ public class ProductController {
 		 modelAndView.setViewName("product/productUpdate");
 		 return modelAndView;
 	 }
-//	 @RequestMapping("/admin/product/productUpdateAfter")
+	 
+	 
+
 	 @RequestMapping(value="/admin/product/productUpdateAfter" , method=RequestMethod.POST)
 	 public String productUpdateAfter(@ModelAttribute Product vo, @RequestParam("updatePno") int productNo) {
 		 vo.setProductNo(productNo);
