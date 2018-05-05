@@ -34,8 +34,6 @@ $(function(){
         //id가 smarteditor인 textarea에 에디터에서 대입
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
         
-        alert("zz");
-        
         var form = document.writeForm;
         form.submit();
 
