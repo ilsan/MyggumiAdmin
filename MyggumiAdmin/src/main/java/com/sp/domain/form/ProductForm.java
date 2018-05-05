@@ -6,11 +6,13 @@ package com.sp.domain.form;
 import com.sp.domain.Common;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author ShipJH
  *
  */
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class ProductForm extends Common {
 
