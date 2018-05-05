@@ -6,12 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.sp.domain.Product;
 import com.sp.domain.User;
+import com.sp.domain.form.ProductForm;
 
 @Mapper
 public interface ProductService {
 
 	 List<User> getUserList();
-	 int productInsert(Product vo);
+	 int productInsert(ProductForm vo);
 	 List<Product> productList();
 	 Product productDetail(int productNo);
 	 int productUpdate(Product vo);

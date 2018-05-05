@@ -2,17 +2,21 @@ package com.sp.contorller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.domain.CommonCodeInfo;
 import com.sp.domain.Product;
+import com.sp.domain.form.ProductForm;
 import com.sp.service.Impl.CommonCodeServiceImpl;
 import com.sp.service.Impl.ProductServiceImpl;
 
@@ -86,11 +90,20 @@ public class ProductController {
 		modelAndView.setViewName("product/productWrite");
 	    return modelAndView;
 	  }
-	 @RequestMapping("/admin/product/productWriteAfter")
-	 public String productWriteAfter(@ModelAttribute Product vo) {
+	 
+	 
+	 @RequestMapping(value="/admin/product/productWriteAfter", method=RequestMethod.POST)
+	 public String productWriteAfter(@ModelAttribute ProductForm vo) {
+		 
+		 System.out.println(">>" + vo.getProductName());
+		 
 		 productServiceImpl.productInsert(vo);
 		 return "redirect:/admin/product/productList";
 	 }
+	 
+	 
+	 
+	 
 	 @RequestMapping("/admin/product/productUpdate")
 	 public ModelAndView productUpdate(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 Product productDetail = productServiceImpl.productDetail(productNo);
@@ -100,7 +113,8 @@ public class ProductController {
 		 modelAndView.setViewName("product/productUpdate");
 		 return modelAndView;
 	 }
-	 @RequestMapping("/admin/product/productUpdateAfter")
+//	 @RequestMapping("/admin/product/productUpdateAfter")
+	 @RequestMapping(value="/admin/product/productUpdateAfter" , method=RequestMethod.POST)
 	 public String productUpdateAfter(@ModelAttribute Product vo, @RequestParam("updatePno") int productNo) {
 		 vo.setProductNo(productNo);
 		 int res = productServiceImpl.productUpdate(vo);

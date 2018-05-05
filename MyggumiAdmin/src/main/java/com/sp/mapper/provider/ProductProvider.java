@@ -3,6 +3,9 @@ package com.sp.mapper.provider;
 import org.apache.ibatis.annotations.Param;
 
 import com.sp.domain.Product;
+import com.sp.domain.form.ProductForm;
+import com.sp.domain.form.ProductForm;
+import com.sp.domain.form.ProductForm;
 
 public class ProductProvider {
 
@@ -31,7 +34,7 @@ public class ProductProvider {
 			
 		return query.toString();
 	}
-	public String productInsert(@Param("vo") Product vo) {
+	public String productInsert(@Param("vo") ProductForm vo) {
 		
 		StringBuilder query = new StringBuilder();
 		

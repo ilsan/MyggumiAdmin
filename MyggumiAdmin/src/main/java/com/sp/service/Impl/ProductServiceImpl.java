@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sp.domain.Product;
 import com.sp.domain.User;
+import com.sp.domain.form.ProductForm;
 import com.sp.mapper.ProductMapper;
 import com.sp.service.ProductService;
 
@@ -23,7 +24,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int productInsert(Product vo) {
+	public int productInsert(ProductForm vo) {
 
 		return testMapper.productInsert(vo);
 	}
