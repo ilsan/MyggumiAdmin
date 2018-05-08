@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,33 +26,22 @@ $(function(){
             bUseModeChanger : true, 
         }
     });
-   
-    //전송버튼
+    
+    
+    
+  //전송버튼
     $("#savebutton").click(function(){
         //id가 smarteditor인 textarea에 에디터에서 대입
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
         
-			var bool = false; 
-		        $(".Data").each(function() { // infoData 반복
-					
-					var val = $(this).val(); // 1 각각 자기의 벨류가
-					
-					if(val==""){ // 2 비어있으면 bool 을 true로 바꿔준다.
-						bool = true;  
-					} 
-					
-				}); // end of each()---------------------
-			
-			if(bool) { // 5 bool이 true 라면 비어있는 항목이 있다는뜻이기 때문에
-				alert(" 제목*, 본문*, 첨부파일* 항목에 빠짐없이 입력하여 주세요."); //  6 클릭 이벤트를 막는다.
-			}else{ // 모두 들어와서 false 라면 
-				 //폼 submit
-		        $("#frm").submit();
-			}
-        
-       
+        var form = document.writeForm;
+        form.submit();
+
     });
+
 });
+
+
 
 </script>
 <title>Insert title here</title>
@@ -60,7 +50,7 @@ $(function(){
  <div class="container body-min-height">
 	<h3>상품 등록</h3>
 	<div style="width: 100%;">
-		<form action="/admin/product/productWriteAfter">
+		<form id="writeForm" name="writeForm" action="/admin/product/productWriteAfter" method="post">
 		<input type="hidden" name="regUser" value="test"/>
 			<table width="100%" class="my-tbl" style="border: 1px black solid;">
 			  <col width="10%">
@@ -82,9 +72,9 @@ $(function(){
 						 <div class="select">
 						    <select name="productType" id="slct">
 						      <option>선택</option>
-						      <option value="NEW">NEW</option>
-						      <option value="HIT">HIT</option>
-						      <option value="DC">DC</option>
+						      <c:forEach items="${productType}" var="typeList">
+						      	<option value="${typeList.comCd}">${typeList.comNm}</option>
+						      </c:forEach>
 						    </select>
 						  </div>
 					  </div>
@@ -94,12 +84,10 @@ $(function(){
 				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
 						    <select name="productCategory" id="slct">
-						      <option>선택</option>
-						      <option value="01">아이폰</option>
-						      <option value="02">삼성</option>
-						      <option value="03">태블릿</option>
-						      <option value="04">노트북</option>
-						      <option value="05">기타</option>
+						      <option value="">선택</option>
+						      <c:forEach items="${productCategory}" var="categoryList">
+						      	<option value="${categoryList.comCd}">${categoryList.comNm}</option>
+						      </c:forEach>
 						    </select>
 						  </div>
 					  </div>
@@ -144,7 +132,8 @@ $(function(){
 			
 			<br></br>
 			<div>
-			<button id="savebutton" class="btnnew noty">확인</button>
+			
+			<input type="button" id="savebutton" class="btnnew noty" value="확인"/>
 			<a class="btnnew noty" onclick="javascript:history.back();">취소</a>
 			</div>
 		</form>

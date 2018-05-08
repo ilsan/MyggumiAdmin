@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sp.domain.PaginationInfo;
 import com.sp.domain.Product;
 import com.sp.domain.User;
+import com.sp.domain.form.ProductForm;
 import com.sp.mapper.ProductMapper;
 import com.sp.service.ProductService;
 
@@ -23,15 +25,15 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int productInsert(Product vo) {
+	public int productInsert(ProductForm vo) {
 
 		return testMapper.productInsert(vo);
 	}
 
 	@Override
-	public List<Product> productList() {
+	public List<Product> productList(PaginationInfo pageInfo) {
 		
-		return testMapper.productList();
+		return testMapper.productList(pageInfo);
 	}
 
 	@Override
@@ -45,6 +47,10 @@ public class ProductServiceImpl implements ProductService{
 
 		return testMapper.productUpdate(vo);
 	}
-	
+
+	@Override
+	public int productTotalCount() {
+		return testMapper.productTotalCount();
+	}
     
 }

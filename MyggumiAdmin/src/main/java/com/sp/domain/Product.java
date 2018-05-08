@@ -1,7 +1,15 @@
 package com.sp.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+
+/**
+ * @author ShipJH
+ * 상품 VO
+ */
+
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class Product extends Common{
 
@@ -14,5 +22,6 @@ public class Product extends Common{
 	private int productPrice;
 	private int productCategory;
 	private String useYn;
-	
+	private String typeNm;
+	private String categoryNm;
 }

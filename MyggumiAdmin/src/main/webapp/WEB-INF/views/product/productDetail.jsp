@@ -27,13 +27,13 @@
 				  <td>상품타입</td>
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
-						 <p>${productDetail.productType }</p>
+						 <p>${productDetail.typeNm }</p>
 					  </div>
 				  </td>
 				  <td>카테고리</td>
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
-						 <p>${productDetail.productCategory }</p>
+						 <p>${productDetail.categoryNm }</p>
 					  </div>
 				  </td>
 			  </tr>		

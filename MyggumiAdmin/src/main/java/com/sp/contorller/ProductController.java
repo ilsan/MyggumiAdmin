@@ -1,19 +1,21 @@
 package com.sp.contorller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sp.common.util.PageUtil;
+import com.sp.domain.CommonCodeInfo;
 import com.sp.domain.PaginationInfo;
 import com.sp.domain.Product;
-import com.sp.service.TestService;
+import com.sp.domain.form.ProductForm;
+import com.sp.service.CommonCodeService;
+import com.sp.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,21 +25,10 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController {
 
 	@Autowired(required=true)
-	private TestService testService;
+	private ProductService productService;
 	
-//	 @RequestMapping("/admin/product/productList")
-//	  public ModelAndView productList(ModelAndView modelAndView) {
-//		 
-//		log.info(">>>>>>>>>>> 접속 product/productList ");
-//		
-//		List<User> d = testServiceImpl.getUserList();
-//		
-//		log.info(d.size());
-//		
-//		modelAndView.addObject("userList", d);
-//		modelAndView.setViewName("product/productList");
-//	    return modelAndView;
-//	  }
+	@Autowired(required=true)
+	private CommonCodeService commonCodeService;
 	
 	 @RequestMapping("/product/productList")
 	  public String productList(Model model, @ModelAttribute("paginationInfo") PaginationInfo pageInfo) {
@@ -46,71 +37,88 @@ public class ProductController {
 		
 		String url = "/admin/product/productList";
 		
-		pageInfo.setTotalRecordCount(testService.productTotalCount());
+		pageInfo.setTotalRecordCount(productService.productTotalCount());
 		
-		model.addAttribute("productList", testService.productList(pageInfo));
+		model.addAttribute("productList", productService.productList(pageInfo));
 		model.addAttribute("count", pageInfo.getTotalRecordCount());
 		model.addAttribute("pageResult", PageUtil.getPageNavigation(pageInfo, url, null));
 
 	    return "product/productList";
 	  }
-	 
+	 /**
+	  * @param modelAndView
+	  * @param productNo - 상품번호
+	  * @return
+	  * 상품 상세내역
+	  */
 	 @RequestMapping("/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
-		 
-		 log.info(">>>>>>>>>>> 접속 product/productDetail ");
-		 
-		 Product productDetail = testService.productDetail(productNo);
-		 
+		 Product productDetail = productService.productDetail(productNo);
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productDetail");
 		 return modelAndView;
 	 }
 	 
+	 
+	 /**
+	  * @param modelAndView
+	  * @return 
+	  * 상품 등록페이지 이동
+	  */
 	 @RequestMapping("/product/productWrite")
-	  public ModelAndView productWrite(Model model, ModelAndView modelAndView) {
-		 
-		log.info(">>>>>>>>>>> 접속 productWrite ");
+	  public ModelAndView productWrite(ModelAndView modelAndView) {
+		modelAndView.addObject("productType", commonCodeService.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+		modelAndView.addObject("productCategory", commonCodeService.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		modelAndView.setViewName("product/productWrite");
 	    return modelAndView;
 	  }
 	 
-	 @RequestMapping("/product/productWriteAfter")
-	 public String productWriteAfter(@ModelAttribute Product vo) {
-		 testService.productInsert(vo);
-		 log.info(">>>>>>>>>>> 상품등록 productInsert");
-		 
+	 
+	 
+	 /**
+	  * @param ProductForm - 등록하기 위한 입력 데이터
+	  * @return
+	  * 상품 등록
+	  */
+	 @RequestMapping(value="/product/productWriteAfter", method=RequestMethod.POST)
+	 public String productWriteAfter(@ModelAttribute ProductForm productForm) {
+		 productService.productInsert(productForm);
 		 return "redirect:/admin/product/productList";
 	 }
 	 
+	 
+	 
+	 /**
+	  * @param ModelAndView
+	  * @param productNo - 상품번호
+	  * @return 
+	  * 상품 수정
+	  */ 
 	 @RequestMapping("/product/productUpdate")
-	 public ModelAndView productUpdate(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
-		 
-		 log.info(">>>>>>>>>>> 접속 productUpdate");
-		 
-		 Product productDetail = testService.productDetail(productNo);
-
+	 public ModelAndView productUpdate(ModelAndView modelAndView, @RequestParam("productNo") int productNo) {
+		 Product productDetail = productService.productDetail(productNo);
+		 modelAndView.addObject("productType", commonCodeService.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+		 modelAndView.addObject("productCategory", commonCodeService.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productUpdate");
 		 return modelAndView;
 	 }
 	 
-	 @RequestMapping("/product/productUpdateAfter")
+	 
+
+	 @RequestMapping(value="/product/productUpdateAfter" , method=RequestMethod.POST)
 	 public String productUpdateAfter(@ModelAttribute Product vo, @RequestParam("updatePno") int productNo) {
 		 vo.setProductNo(productNo);
-		 int res = testService.productUpdate(vo);
+		 int res = productService.productUpdate(vo);
 		 if(res>0) {
-			 log.info(">>>>>>>>>>> 상품수정 productUpdateAfter"); 
+			 System.out.println(">>>>>>>>>>> 상품수정 productUpdateAfter"); 
 		 }else {
-			 log.info(">>>>>>>>>>> 상품실패 productUpdateAfter");
+			 System.out.println(">>>>>>>>>>> 상품실패 productUpdateAfter");
 		 }
 		 return "redirect:/admin/product/productDetail?productNo="+productNo;
 	 }
-	 
-	 @RequestMapping("/member/memberList")
-	 public ModelAndView memberList(Model model, ModelAndView modelAndView) {
-		 
-		log.info(">>>>>>>>>>> 접속 memberList ");
+	 @RequestMapping("/admin/member/memberList")
+	  public ModelAndView memberList(Model model, ModelAndView modelAndView) {
 		modelAndView.setViewName("member/memberList");
 	    return modelAndView;
 	  }
