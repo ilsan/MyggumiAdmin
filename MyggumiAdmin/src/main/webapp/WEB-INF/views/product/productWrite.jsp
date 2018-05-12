@@ -66,7 +66,6 @@ $(function(){
 			    	  <div class="my-padding-10 my-width-90">
 			    		  <input type="text" name="productName"/>
 			    		  <form:errors path="productName" />
-			    		  
 			    	  </div>
 				  </td>
 			  </tr>
@@ -103,6 +102,7 @@ $(function(){
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
 						<input type="text" name="productPrice"/>
+						<form:errors path="productPrice" />
 					  </div>
 				  </td>
 				  <td>할인율</td>

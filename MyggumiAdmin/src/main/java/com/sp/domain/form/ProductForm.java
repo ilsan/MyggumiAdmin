@@ -20,12 +20,14 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ProductForm extends Common {
 
-	@NotEmpty(message="Name Plz~~!")
+	@NotEmpty(message="상품 이름을 입력해주세요.")
 	private String productName;
 	
 	private String productContent;
 	private String productType;
 	private Integer productDc;
+	
+	@NotNull(message="상품 가격을 입력해주세요.")
 	private Integer productPrice;
 	private String productCategory;
 	private String useYn;
