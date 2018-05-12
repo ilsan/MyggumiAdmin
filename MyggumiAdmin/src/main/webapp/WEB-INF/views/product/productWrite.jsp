@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,7 +52,8 @@ $(function(){
  <div class="container body-min-height">
 	<h3>상품 등록</h3>
 	<div style="width: 100%;">
-		<form id="writeForm" name="writeForm" action="/admin/product/productWriteAfter" method="post">
+<%-- 		<form id="writeForm" name="writeForm" action="/admin/product/productWriteAfter" method="post"> --%>
+		<form:form modelAttribute="productForm" name="writeForm" action="/admin/product/productWriteAfter" method="post">
 		<input type="hidden" name="regUser" value="test"/>
 			<table width="100%" class="my-tbl" style="border: 1px black solid;">
 			  <col width="10%">
@@ -62,6 +65,8 @@ $(function(){
 				  <td colspan="3">
 			    	  <div class="my-padding-10 my-width-90">
 			    		  <input type="text" name="productName"/>
+			    		  <form:errors path="productName" />
+			    		  
 			    	  </div>
 				  </td>
 			  </tr>
@@ -136,7 +141,8 @@ $(function(){
 			<input type="button" id="savebutton" class="btnnew noty" value="확인"/>
 			<a class="btnnew noty" onclick="javascript:history.back();">취소</a>
 			</div>
-		</form>
+<%-- 		</form> --%>
+		</form:form>
 	</div>
 		
 		<br/>

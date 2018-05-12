@@ -3,11 +3,13 @@ package com.sp.contorller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -93,9 +95,13 @@ public class ProductController {
 	  * 상품 등록
 	  */
 	 @RequestMapping(value="/admin/product/productWriteAfter", method=RequestMethod.POST)
-	 public String productWriteAfter(@ModelAttribute ProductForm productForm) {
+	 public ModelAndView productWriteAfter(@ModelAttribute @Valid ProductForm productForm, BindingResult result) {
+		 if(result.hasErrors()) {
+			 return new ModelAndView("product/productWrite");
+		 }
+		 
 		 productServiceImpl.productInsert(productForm);
-		 return "redirect:/admin/product/productList";
+		 return new ModelAndView("redirect:/admin/product/productList");
 	 }
 	 
 	 
