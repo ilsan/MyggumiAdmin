@@ -32,25 +32,9 @@ $(function(){
         //id가 smarteditor인 textarea에 에디터에서 대입
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
         
-			var bool = false; 
-		        $(".Data").each(function() { // infoData 반복
-					
-					var val = $(this).val(); // 1 각각 자기의 벨류가
-					
-					if(val==""){ // 2 비어있으면 bool 을 true로 바꿔준다.
-						bool = true;  
-					} 
-					
-				}); // end of each()---------------------
-			
-			if(bool) { // 5 bool이 true 라면 비어있는 항목이 있다는뜻이기 때문에
-				alert(" 제목*, 본문*, 첨부파일* 항목에 빠짐없이 입력하여 주세요."); //  6 클릭 이벤트를 막는다.
-			}else{ // 모두 들어와서 false 라면 
-				 //폼 submit
-		        $("#frm").submit();
-			}
-        
-       
+        var form = document.updateForm;
+        form.submit();
+
     });
 });
 
@@ -61,7 +45,7 @@ $(function(){
  <div class="container body-min-height">
 	<h3>상품 수정</h3>
 	<div style="width: 100%;">
-		<form action="/admin/product/productUpdateAfter">
+		<form id="updateForm" name="updateForm" action="/admin/product/productUpdateAfter" method="post">
 		<input type="hidden" name="updatePno" value="${productDetail.productNo }">
 		<input type="hidden" name="regUser" value="test"/>
 			<table width="100%" class="my-tbl" style="border: 1px black solid;">
@@ -86,10 +70,9 @@ $(function(){
 						 
 						    <select name="productType" id="slct" class="productType">
 						      <option>선택</option>
-<%-- 						      <c:forEach items="${productType}" var="typeList"> --%>
-<%-- 						      	<option value="${typeList.comCd}" <c:if test="${typeList.comCd eq productDetail.productType}">selected</c:if>>${typeList.comNm}</option> --%>
-<%-- 						      </c:forEach> --%>
-						      
+ 						      <c:forEach items="${productType}" var="typeList">
+ 						      	<option value="${typeList.comCd}" <c:if test="${typeList.comCd eq productDetail.productType}">selected</c:if>>${typeList.comNm}</option>
+ 						      </c:forEach> 
 						     <%--  <option value="NEW" <c:if test="${productDetail.productType == 'NEW'}">selected</c:if>>NEW</option>
 						      <option value="HIT" <c:if test="${productDetail.productType == 'HIT'}">selected</c:if>>HIT</option>
 						      <option value="DC" <c:if test="${productDetail.productType == 'DC'}">selected</c:if>>DC</option> --%>
@@ -104,9 +87,9 @@ $(function(){
 						 
 						    <select name="productCategory" id="slct" class="productCategory">
 						      <option>선택</option>
-<%-- 						      <c:forEach items="${productCategory}" var="categoryList"> --%>
-<%-- 						      	<option value="${categoryList.comCd}" <c:if test="${categoryList.comCd eq productDetail.productCategory}">selected</c:if>>${categoryList.comNm}</option> --%>
-<%-- 						      </c:forEach> --%>
+ 						      <c:forEach items="${productCategory}" var="categoryList">
+  						      	<option value="${categoryList.comCd}" <c:if test="${categoryList.comCd eq productDetail.productCategory}">selected</c:if>>${categoryList.comNm}</option>
+ 						      </c:forEach> 
 						      <%-- <option value="01" <c:if test="${productDetail.productCategory == 1}">selected</c:if>>아이폰</option>
 						      <option value="02" <c:if test="${productDetail.productCategory == 2}">selected</c:if>>삼성</option>
 						      <option value="03" <c:if test="${productDetail.productCategory == 3}">selected</c:if>>태블릿</option>
@@ -157,7 +140,7 @@ $(function(){
 			
 			<br></br>
 			<div>
-			<button id="savebutton" class="btnnew noty">수정 완료</button>
+			<input type="button" id="savebutton" class="btnnew noty" value="수정완료"/>
 			<a class="btnnew noty" onclick="javascript:history.back();">취소</a>
 			</div>
 		</form>

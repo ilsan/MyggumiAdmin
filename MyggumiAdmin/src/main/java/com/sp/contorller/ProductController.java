@@ -47,6 +47,8 @@ public class ProductController {
 	 @RequestMapping("/admin/product/productList")
 	  public ModelAndView productList(ModelAndView modelAndView) {
 		List<Product> productList = productServiceImpl.productList();
+		modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+		modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		modelAndView.addObject("productList", productList);
 		modelAndView.setViewName("product/productList");
 	    return modelAndView;
@@ -62,6 +64,8 @@ public class ProductController {
 	 @RequestMapping("/admin/product/productDetail")
 	 public ModelAndView productDetail(ModelAndView modelAndView,@RequestParam("productNo") int productNo) {
 		 Product productDetail = productServiceImpl.productDetail(productNo);
+		 modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+			modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		 modelAndView.addObject("productDetail",productDetail);
 		 modelAndView.setViewName("product/productDetail");
 		 return modelAndView;

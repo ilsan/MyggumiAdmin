@@ -13,24 +13,20 @@ public class ProductProvider {
 		
 		StringBuilder query = new StringBuilder();
 		
-			query.append("SELECT A.PRODUCT_NO");
-			query.append(",A.PRODUCT_NAME");
-			query.append(",A.PRODUCT_CONTENT");
-			query.append(",A.PRODUCT_TYPE");
-			query.append(",A.PRODUCT_DC");
-			query.append(",A.PRODUCT_PRICE");
-			query.append(",A.PRODUCT_CATEGORY");
-			query.append(",A.REG_USER");
-			query.append(",A.REG_DATE");
-			query.append(",A.UPD_USER");
-			query.append(",A.UPD_DATE");
-			query.append(",A.USE_YN");
-			query.append(",B.COM_NM AS TYPE_NM");
-			query.append(",C.COM_NM AS CATEGORY_NM");
-			query.append(" FROM PRODUCT A");
-			query.append(" INNER JOIN COMMON_CD B ON A.PRODUCT_TYPE=B.COM_CD");
-			query.append(" INNER JOIN COMMON_CD C ON A.PRODUCT_CATEGORY=C.COM_CD");
-			query.append(" ORDER BY A.PRODUCT_NO DESC");
+			query.append("SELECT PRODUCT_NO");
+			query.append(",PRODUCT_NAME");
+			query.append(",PRODUCT_CONTENT");
+			query.append(",PRODUCT_TYPE");
+			query.append(",PRODUCT_DC");
+			query.append(",PRODUCT_PRICE");
+			query.append(",PRODUCT_CATEGORY");
+			query.append(",REG_USER");
+			query.append(",REG_DATE");
+			query.append(",UPD_USER");
+			query.append(",UPD_DATE");
+			query.append(",USE_YN");
+			query.append(" FROM PRODUCT ");
+			query.append(" ORDER BY PRODUCT_NO DESC");
 			
 		return query.toString();
 	}
@@ -84,24 +80,20 @@ public class ProductProvider {
 		
 		StringBuilder query = new StringBuilder();
 		
-		query.append("SELECT A.PRODUCT_NO");
-		query.append(",A.PRODUCT_NAME");
-		query.append(",A.PRODUCT_CONTENT");
-		query.append(",A.PRODUCT_TYPE");
-		query.append(",A.PRODUCT_DC");
-		query.append(",A.PRODUCT_PRICE");
-		query.append(",A.PRODUCT_CATEGORY");
-		query.append(",A.REG_USER");
-		query.append(",A.REG_DATE");
-		query.append(",A.UPD_USER");
-		query.append(",A.UPD_DATE");
-		query.append(",A.USE_YN");
-		query.append(",B.COM_NM AS TYPE_NM");
-		query.append(",C.COM_NM AS CATEGORY_NM");
-		query.append(" FROM PRODUCT A ");
-		query.append(" INNER JOIN COMMON_CD B ON A.PRODUCT_TYPE=B.COM_CD");
-		query.append(" INNER JOIN COMMON_CD C ON A.PRODUCT_CATEGORY=C.COM_CD");
-		query.append(" WHERE A.PRODUCT_NO = #{productNo}");
+		query.append("SELECT PRODUCT_NO");
+		query.append(",PRODUCT_NAME");
+		query.append(",PRODUCT_CONTENT");
+		query.append(",PRODUCT_TYPE");
+		query.append(",PRODUCT_DC");
+		query.append(",PRODUCT_PRICE");
+		query.append(",PRODUCT_CATEGORY");
+		query.append(",REG_USER");
+		query.append(",REG_DATE");
+		query.append(",UPD_USER");
+		query.append(",UPD_DATE");
+		query.append(",USE_YN");
+		query.append(" FROM PRODUCT ");
+		query.append(" WHERE PRODUCT_NO = #{productNo}");
 		
 		return query.toString();
 	}

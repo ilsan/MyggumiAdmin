@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,13 +28,21 @@
 				  <td>상품타입</td>
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
-						 <p>${productDetail.typeNm }</p>
+						 	<c:forEach items="${productType}" var="typeList">
+ 						      	<c:if test="${typeList.comCd eq productDetail.productType}">
+ 						      	<p>${typeList.comNm}</p>
+ 						      	</c:if>
+ 						    </c:forEach>
 					  </div>
 				  </td>
 				  <td>카테고리</td>
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
-						 <p>${productDetail.categoryNm }</p>
+						 <c:forEach items="${productCategory}" var="categoryList">
+  						      	<c:if test="${categoryList.comCd eq productDetail.productCategory}">
+  						      	<p>${categoryList.comNm}</p>
+  						      	</c:if>
+ 						 </c:forEach>
 					  </div>
 				  </td>
 			  </tr>		

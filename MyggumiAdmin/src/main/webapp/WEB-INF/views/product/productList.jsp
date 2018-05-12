@@ -55,8 +55,16 @@ function productWrite() {
 			  			<tr>
 			  				<td>${productList.productNo }</td>
 			  				<td><a href="/admin/product/productDetail?productNo=${productList.productNo }">${productList.productName }</a></td>
-			  				<td>${productList.typeNm }</td>
-			  				<td>${productList.categoryNm }</td>
+			  				<c:forEach items="${productType}" var="typeList">
+ 						      	<c:if test="${typeList.comCd eq productList.productType}">
+ 						      	<td>${typeList.comNm}</td>
+ 						      	</c:if>
+ 						    </c:forEach> 
+			  				<c:forEach items="${productCategory}" var="categoryList">
+  						      	<c:if test="${categoryList.comCd eq productList.productCategory}">
+  						      	<td>${categoryList.comNm}</td>
+  						      	</c:if>
+ 						    </c:forEach>
 			  				<td><fmt:formatNumber value="${productList.productPrice }" pattern="#,###"/></td>
 			  				<td>${productList.useYn }</td>
 			  				<td>${productList.regDate }</td> 
