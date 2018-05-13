@@ -97,7 +97,11 @@ public class ProductController {
 	 @RequestMapping(value="/admin/product/productWriteAfter", method=RequestMethod.POST)
 	 public ModelAndView productWriteAfter(@ModelAttribute @Valid ProductForm productForm, BindingResult result) {
 		 if(result.hasErrors()) {
-			 return new ModelAndView("product/productWrite");
+			 ModelAndView modelAndView = new ModelAndView();
+			 modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+			 modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
+			 modelAndView.setViewName("product/productWrite");
+			 return modelAndView;
 		 }
 		 
 		 productServiceImpl.productInsert(productForm);
