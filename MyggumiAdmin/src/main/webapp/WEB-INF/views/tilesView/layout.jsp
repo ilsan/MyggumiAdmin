@@ -24,9 +24,8 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>    
     <script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/lineandbars.js"></script>
+<%-- 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/lineandbars.js"></script> --%>
     
-	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/myjs.js"></script>
 	
 	<!-- NOTY JAVASCRIPT -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/noty/jquery.noty.js"></script>
