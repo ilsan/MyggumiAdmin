@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
+import com.sp.common.util.ProductExcelDownload;
 import com.sp.domain.CommonCodeInfo;
 import com.sp.domain.Product;
 import com.sp.domain.form.ProductForm;
@@ -135,9 +137,24 @@ public class ProductController {
 		 }
 		 return "redirect:/admin/product/productDetail?productNo="+productNo;
 	 }
+	 
 	 @RequestMapping("/admin/member/memberList")
 	  public ModelAndView memberList(Model model, ModelAndView modelAndView) {
 		modelAndView.setViewName("member/memberList");
 	    return modelAndView;
 	  }
+	 
+	@RequestMapping("/admin/product/productExcelDownload")
+	public View productExcelDownload(Model model) {
+		List<Product> productList = productServiceImpl.productList(); 
+
+		model.addAttribute("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
+		model.addAttribute("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
+		model.addAttribute("list", productList);
+		
+		return (View) new ProductExcelDownload();
+	}
+	 
+	 
+	 
 }

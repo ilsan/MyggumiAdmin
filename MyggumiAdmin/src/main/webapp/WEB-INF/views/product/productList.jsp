@@ -79,6 +79,8 @@ function productWrite() {
 			<button class="btnnew noty" onclick="location.href='/admin/product/productWrite';">등록하기</button>
 			<button class="btnnew noty" ><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 일괄 등록</button>
 			                  ------------------------- 페이징 처리 필요 ------------------------------
+			<a href="/admin/product/productExcelDownload"><img width="22px" height="22px" src="<%=request.getContextPath()%>/assets/images/excel-icon.png" /> 엑셀 다운로드 </a>			                  
+			                  
 		</div>	
 </div>	
 </body>

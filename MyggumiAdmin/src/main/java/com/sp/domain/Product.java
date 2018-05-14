@@ -19,7 +19,7 @@ public class Product extends Common{
 	private String productType;
 	private int productDc;
 	private int productPrice;
-	private int productCategory;
+	private String productCategory;
 	private String useYn;
 	private String typeNm;
 	private String categoryNm;
