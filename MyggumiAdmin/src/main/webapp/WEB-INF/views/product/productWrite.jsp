@@ -64,7 +64,8 @@ $(function(){
 				  <td>상품명 </td>
 				  <td colspan="3">
 			    	  <div class="my-padding-10 my-width-90">
-			    		  <input type="text" name="productName"/>
+<!-- 			    		  <input type="text" name="productName"/> -->
+			    		  <form:input path="productName" />
 			    		  <form:errors path="productName" />
 			    	  </div>
 				  </td>
@@ -74,12 +75,16 @@ $(function(){
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
-						    <select name="productType" id="slct">
-						      <option>선택</option>
-						      <c:forEach items="${productType}" var="typeList">
-						      	<option value="${typeList.comCd}">${typeList.comNm}</option>
-						      </c:forEach>
-						    </select>
+							<form:select path="productType">
+							  <form:option value="선택" /> 
+						      <form:options items="${productType}" itemValue="comCd" itemLabel="comNm"/>
+							</form:select>
+<!-- 						    <select name="productType" id="slct"> -->
+<!-- 						      <option>선택</option> -->
+<%-- 						      <c:forEach items="${productType}" var="typeList"> --%>
+<%-- 						      	<option value="${typeList.comCd}">${typeList.comNm}</option> --%>
+<%-- 						      </c:forEach> --%>
+<!-- 						    </select> -->
 						  </div>
 					  </div>
 				  </td>
@@ -87,12 +92,16 @@ $(function(){
 				  <td>
 				 	 <div class="my-padding-10 my-width-75">
 						 <div class="select">
-						    <select name="productCategory" id="slct">
-						      <option value="">선택</option>
-						      <c:forEach items="${productCategory}" var="categoryList">
-						      	<option value="${categoryList.comCd}">${categoryList.comNm}</option>
-						      </c:forEach>
-						    </select>
+						 	<form:select path="productCategory">
+							  <form:option value="선택" /> 
+						      <form:options items="${productCategory}" itemValue="comCd" itemLabel="comNm"/>
+							</form:select>
+<!-- 						    <select name="productCategory" id="slct"> -->
+<!-- 						      <option value="">선택</option> -->
+<%-- 						      <c:forEach items="${productCategory}" var="categoryList"> --%>
+<%-- 						      	<option value="${categoryList.comCd}">${categoryList.comNm}</option> --%>
+<%-- 						      </c:forEach> --%>
+<!-- 						    </select> -->
 						  </div>
 					  </div>
 				  </td>

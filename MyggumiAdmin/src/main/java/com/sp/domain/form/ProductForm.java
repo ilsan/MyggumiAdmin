@@ -29,6 +29,7 @@ public class ProductForm extends Common {
 	
 	@NotNull(message="상품 가격을 입력해주세요.")
 	private Integer productPrice;
+	
 	private String productCategory;
 	private String useYn;
 	private String typeNm;

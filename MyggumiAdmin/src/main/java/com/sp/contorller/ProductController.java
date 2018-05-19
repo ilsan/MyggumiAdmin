@@ -84,6 +84,7 @@ public class ProductController {
 		modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
 		modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
 		modelAndView.setViewName("product/productWrite");
+		 modelAndView.addObject("productForm",new ProductForm());
 	    return modelAndView;
 	  }
 	 
@@ -100,6 +101,7 @@ public class ProductController {
 			 ModelAndView modelAndView = new ModelAndView();
 			 modelAndView.addObject("productType", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_TYPE.getCode()));
 			 modelAndView.addObject("productCategory", commonCodeServiceImpl.findByCode(CommonCodeInfo.PRODUCT_CATEGORY.getCode()));
+			 modelAndView.addObject("productForm", productForm);
 			 modelAndView.setViewName("product/productWrite");
 			 return modelAndView;
 		 }
