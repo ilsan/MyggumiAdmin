@@ -10,6 +10,26 @@
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
 <script type="text/javascript">
 
+function search(){
+	
+	console.log("되나");
+	
+	var f = $("<form></form>");
+	
+	var search_type = $("#search_concept").text();
+	var search_value = $("input[name=x]").val();
+	
+	var input_type = $('<input type="hidden" value="'+search_type+'" name="searchType">');
+	var input_value = $('<input type="hidden" value="'+search_value+'" name="searchValue">');
+	
+	f.attr("name", "searchForm");
+	f.append(input_type);
+	f.append(input_value);
+	f.attr('action', '/admin/product/productList');
+    f.attr('method', 'get');
+    f.appendTo('body');
+}
+
 $(function(){
 	$('.search-panel .dropdown-menu').find('a').click(function(e) {
 		e.preventDefault();
@@ -19,23 +39,6 @@ $(function(){
 		$('.input-group #search_param').val(param);
 	});
 	
-	function search(){
-		var f = $("<form></form>");
-		
-		var search_concept = $("#search_concept").val();
-		var search_param = $("input[name=x]").val();
-		var input_con = $("<input type='hidden' value="+search_concept+" name='searchVal'>");
-		var input_param = $("<input type='hidden' value="+search_param+" name='searchParam'>");
-		
-		f.appendTo('body');
-		f.attr("name", "searchForm");
-		f.append(searchVal);
-		f.append(input_param);
-		
-		f.attr('action', '/admin/product/productList');
-	    f.attr('method', 'get');
-
-	}
 })
 
 
@@ -77,7 +80,7 @@ $(function(){
 <div class="container body-min-height">
 	<h3>상품 리스트</h3>
 		<div class="row" style="margin-bottom: 10px">    
-         <div class="col-xs-6 pull-right">
+         <div class="col-xs-4 pull-right">
  		    <div class="input-group">
                 <div class="input-group-btn search-panel">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -99,9 +102,9 @@ $(function(){
 				                    
                 </div>
                 <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control" name="x" placeholder="Search term..." style="height: 34px">
+                <input type="text" class="form-control" name="x" placeholder="Search term..." style="height: 34px; color: lightgrey;">
                 <div class="input-group-btn search-panel">
-                    <button class="btn btn-default" type="button" onclick="fn:search()">훗<!-- <span class="glyphicon glyphicon-search" aria-hidden="true"> --></span></button>
+                    <button class="btn btn-default" type="button" onclick="fn:search()">훗<!-- <span class="glyphicon glyphicon-search" aria-hidden="true"> </span>--></button>
                 </div>
            </div>
         </div>
