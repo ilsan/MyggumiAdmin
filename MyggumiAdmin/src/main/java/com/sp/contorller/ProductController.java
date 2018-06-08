@@ -37,12 +37,12 @@ public class ProductController {
 		
 		String url = "/admin/product/productList";
 		
-		pageInfo.setTotalRecordCount(productService.productTotalCount());
+		/*pageInfo.setTotalRecordCount(productService.productTotalCount());
 		
 		model.addAttribute("productList", productService.productList(pageInfo));
 		model.addAttribute("count", pageInfo.getTotalRecordCount());
 		model.addAttribute("pageResult", PageUtil.getPageNavigation(pageInfo, url, null));
-
+*/
 	    return "product/productList";
 	  }
 	 /**

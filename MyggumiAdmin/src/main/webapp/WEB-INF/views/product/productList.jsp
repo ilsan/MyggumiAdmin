@@ -7,24 +7,105 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
 <script type="text/javascript">
 
-function productWrite() {
+$(function(){
+	$('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
+		$('.input-group #search_param').val(param);
+	});
 	
-}
+	function search(){
+		var f = $("<form></form>");
+		
+		var search_concept = $("#search_concept").val();
+		var search_param = $("input[name=x]").val();
+		var input_con = $("<input type='hidden' value="+search_concept+" name='searchVal'>");
+		var input_param = $("<input type='hidden' value="+search_param+" name='searchParam'>");
+		
+		f.appendTo('body');
+		f.attr("name", "searchForm");
+		f.append(searchVal);
+		f.append(input_param);
+		
+		f.attr('action', '/admin/product/productList');
+	    f.attr('method', 'get');
+
+	}
+})
 
 
 </script>
 <style type="text/css">
 @media (max-width:360px){th{font-size:3px;}}
 @media (max-width:360px){td{font-size:3px;}}
+
+/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"); */
+/* @font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-search:before {
+  content: "\e003";
+} */
+
+
+
 </style>
 <title>상품 리스트</title>
 </head>
 <body class="body-font-color">
 <div class="container body-min-height">
 	<h3>상품 리스트</h3>
-	
+		<div class="row" style="margin-bottom: 10px">    
+         <div class="col-xs-6 pull-right">
+ 		    <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                    	<li><a href="#all">전체</a></li>
+                    	<li class="divider" style="margin: 0"></li>
+						<li><a href="#contains">상품코드</a></li>
+						<li><a href="#its_equal">상품타입</a></li>
+						<li><a href="#greather_than">상품명</a></li>
+						<li><a href="#less_than">카테고리</a></li>
+                    </ul> 
+                   	<!-- <select multiple title="Choose one of the following...">
+					  	<option>Mustard</option>
+					  	<option>Ketchup</option>
+						<option>Relish</option>
+					</select> -->
+				                    
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">         
+                <input type="text" class="form-control" name="x" placeholder="Search term..." style="height: 34px">
+                <div class="input-group-btn search-panel">
+                    <button class="btn btn-default" type="button" onclick="fn:search()">훗<!-- <span class="glyphicon glyphicon-search" aria-hidden="true"> --></span></button>
+                </div>
+           </div>
+        </div>
+	</div>
 		<!-- margin:0 auto; -->
 		<div style="width: 100%;">
 			<table width="100%" class="my-tbl">
