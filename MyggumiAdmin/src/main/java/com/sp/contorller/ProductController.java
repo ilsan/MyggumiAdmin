@@ -33,18 +33,20 @@ public class ProductController {
 	 @RequestMapping("/product/productList")
 	  public String productList(Model model, @ModelAttribute("paginationInfo") PaginationInfo pageInfo) {
 		 
+		log.info(pageInfo.toString());
+		 
 		log.info(">>>>>>>>>>> 접속 product/productList ");
 		
 		String url = "/admin/product/productList";
 		
-		/*pageInfo.setTotalRecordCount(productService.productTotalCount());
+		pageInfo.setTotalRecordCount(productService.productTotalCount());
 		
 		model.addAttribute("productList", productService.productList(pageInfo));
 		model.addAttribute("count", pageInfo.getTotalRecordCount());
 		model.addAttribute("pageResult", PageUtil.getPageNavigation(pageInfo, url, null));
-*/
+
 	    return "product/productList";
-	  }
+	 }
 	 /**
 	  * @param modelAndView
 	  * @param productNo - 상품번호

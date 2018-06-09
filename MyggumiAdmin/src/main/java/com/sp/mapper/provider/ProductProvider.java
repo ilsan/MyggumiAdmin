@@ -49,7 +49,16 @@ public class ProductProvider {
 				query.append("			 UPD_USER,"); 
 				query.append("			 UPD_DATE,"); 
 				query.append("			 USE_YN ");	
-				query.append("        FROM PRODUCT"); 
+				query.append("        FROM PRODUCT");
+			if(pageInfo.getSearchOption() != null) {	
+				if(pageInfo.getSearchOption().equals("all")) {	
+					query.append("        WHERE PRODUCT_NAME like '%'||#{keyword}||'%'");
+					query.append("        OR PRODUCT_TYPE like '%'||#{keyword}||'%'");
+					query.append("        OR PRODUCT_CATEGORY like '%'||#{keyword}||'%'");
+				}else {
+					query.append("        WHERE #{searchOption} like '%'||#{keyword}||'%'");
+				}
+			}
 				query.append("    ) AA"); 
 				query.append(") AAA"); 
 				query.append(" WHERE"); 

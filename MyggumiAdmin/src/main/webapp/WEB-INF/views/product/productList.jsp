@@ -12,22 +12,20 @@
 
 function search(){
 	
-	console.log("되나");
-	
 	var f = $("<form></form>");
+	var input_type = $("#searchOption").clone();
+	var keyword = $("#keyword").val();
+	var input_keyword = '<input type="hidden" name="keyword" value="'+keyword+'">';
 	
-	var search_type = $("#search_concept").text();
-	var search_value = $("input[name=x]").val();
-	
-	var input_type = $('<input type="hidden" value="'+search_type+'" name="searchType">');
-	var input_value = $('<input type="hidden" value="'+search_value+'" name="searchValue">');
+	console.log(keyword);
 	
 	f.attr("name", "searchForm");
 	f.append(input_type);
-	f.append(input_value);
+	f.append(input_keyword);
 	f.attr('action', '/admin/product/productList');
     f.attr('method', 'get');
     f.appendTo('body');
+    f.submit();
 }
 
 $(function(){
@@ -36,7 +34,7 @@ $(function(){
 		var param = $(this).attr("href").replace("#","");
 		var concept = $(this).text();
 		$('.search-panel span#search_concept').text(concept);
-		$('.input-group #search_param').val(param);
+		$('.input-group #searchOption').val(param);
 	});
 	
 })
@@ -80,19 +78,19 @@ $(function(){
 <div class="container body-min-height">
 	<h3>상품 리스트</h3>
 		<div class="row" style="margin-bottom: 10px">    
-         <div class="col-xs-4 pull-right">
+         <div class="col-xs-5 pull-right">
  		    <div class="input-group">
                 <div class="input-group-btn search-panel">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
+                    	<span id="search_concept">전체</span> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                     	<li><a href="#all">전체</a></li>
                     	<li class="divider" style="margin: 0"></li>
-						<li><a href="#contains">상품코드</a></li>
-						<li><a href="#its_equal">상품타입</a></li>
-						<li><a href="#greather_than">상품명</a></li>
-						<li><a href="#less_than">카테고리</a></li>
+						<!-- <li><a href="#contains">상품코드</a></li> -->
+						<li><a href="#product_type">상품타입</a></li>
+						<li><a href="#product_name">상품명</a></li>
+						<li><a href="#product_category">카테고리</a></li>
                     </ul> 
                    	<!-- <select multiple title="Choose one of the following...">
 					  	<option>Mustard</option>
@@ -101,8 +99,8 @@ $(function(){
 					</select> -->
 				                    
                 </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control" name="x" placeholder="Search term..." style="height: 34px; color: lightgrey;">
+                <input type="hidden" name="searchOption" value="all" id="searchOption">         
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search term..." style="height: 34px; color: lightgrey;" value="">
                 <div class="input-group-btn search-panel">
                     <button class="btn btn-default" type="button" onclick="fn:search()">훗<!-- <span class="glyphicon glyphicon-search" aria-hidden="true"> </span>--></button>
                 </div>

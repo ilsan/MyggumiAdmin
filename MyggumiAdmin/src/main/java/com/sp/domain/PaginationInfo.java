@@ -21,7 +21,25 @@ public class PaginationInfo {
 	private int recordCountPerPage;
 	private int pageSize;
 	private int totalRecordCount;
+	private String searchOption;
+	private String keyword;
 	
+	public String getSearchOption() {
+		return searchOption;
+	}
+
+	public void setSearchOption(String searchOption) {
+		this.searchOption = searchOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public PaginationInfo() {
 		if(currentPageNo < 1) {
 			currentPageNo = 1;
@@ -117,12 +135,10 @@ public class PaginationInfo {
 
 	@Override
 	public String toString() {
-		return "Pagenation [currentPageNo=" + currentPageNo + ", recordCountPerPage=" + recordCountPerPage
-				+ ", pageSize=" + pageSize + ", totalRecordCount=" + totalRecordCount + ", totalPageCount="
-				+ totalPageCount + ", firstPageNoOnPageList=" + firstPageNoOnPageList + ", lastPageNoOnPageList="
-				+ lastPageNoOnPageList + ", firstRecordIndex=" + firstRecordIndex + ", lastRecordIndex="
-				+ lastRecordIndex + "]";
-	}	
-	
-	
+		return "PaginationInfo [currentPageNo=" + currentPageNo + ", recordCountPerPage=" + recordCountPerPage
+				+ ", pageSize=" + pageSize + ", totalRecordCount=" + totalRecordCount + ", searchOption=" + searchOption
+				+ ", keyword=" + keyword + ", totalPageCount=" + totalPageCount + ", firstPageNoOnPageList="
+				+ firstPageNoOnPageList + ", lastPageNoOnPageList=" + lastPageNoOnPageList + ", firstRecordIndex="
+				+ firstRecordIndex + ", lastRecordIndex=" + lastRecordIndex + "]";
+	}
 }
